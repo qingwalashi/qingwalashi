@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工具 - QLWS｜调温而行</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <style>
@@ -22,6 +22,9 @@
             transition: all 0.3s ease;
             background: var(--bg-color);
             box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
         }
 
         .tool-card:hover {
@@ -40,8 +43,9 @@
 
         .tool-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         .tool-link {
@@ -53,11 +57,14 @@
             border-radius: 8px;
             transition: all 0.2s ease;
             font-weight: 500;
+            align-self: flex-start;
+            margin-top: auto;
         }
 
         .tool-link:hover {
             background-color: var(--primary-hover);
             transform: translateY(-1px);
+            opacity: 0.85;
         }
 
         .no-tools {
@@ -117,8 +124,10 @@
                     
                     return `
                         <div class="tool-card">
-                            <h2 class="tool-title">${tool.title}</h2>
-                            <p class="tool-description">${tool.description}</p>
+                            <div>
+                                <h2 class="tool-title">${tool.title}</h2>
+                                <p class="tool-description">${tool.description}</p>
+                            </div>
                             <a href="${href}" class="tool-link" target="_blank">
                                 使用工具
                             </a>
