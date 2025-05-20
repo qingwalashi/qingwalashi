@@ -258,64 +258,118 @@ body {
 
 .tags-container {
     display: grid;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .tag-card {
-    padding: 1.5rem;
+    padding: 1rem;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background: var(--bg-color);
-    transition: all 0.3s ease;
-    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    transition: all 0.2s;
 }
 
 .tag-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tag-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.tag-count {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.tag-articles {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+
+.tag-article {
+    margin-bottom: 0.5rem;
+}
+
+.tag-article a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.tag-article a:hover {
+    color: var(--primary-color);
+}
+
+/* 工具页面样式 */
+.tools-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tool-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: var(--bg-color);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.tool-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--card-shadow-hover);
     border-color: var(--primary-color);
 }
 
-.tag-name {
+.tool-title {
     font-size: 1.25rem;
     font-weight: 600;
+    margin-bottom: 0.75rem;
     color: var(--text-color);
-    margin-bottom: 0.5rem;
     letter-spacing: -0.025em;
 }
 
-.tag-count {
-    font-size: 0.875rem;
+.tool-description {
     color: var(--text-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    flex-grow: 1;
 }
 
-.tag-articles {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.tag-article {
-    padding: 0.75rem;
+.tool-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
     border-radius: 8px;
     transition: all 0.2s ease;
-    border: 1px solid transparent;
-}
-
-.tag-article:hover {
-    background-color: var(--bg-secondary);
-    border-color: var(--border-color);
-}
-
-.tag-article a {
-    text-decoration: none;
-    color: var(--text-color);
     font-weight: 500;
-    font-size: 0.9375rem;
+    align-self: flex-start;
+    margin-top: auto;
 }
 
-.tag-article a:hover {
-    color: var(--primary-color);
+.tool-link:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    opacity: 0.85;
+}
+
+.no-tools {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
 }
 
 /* 响应式设计 */
@@ -323,34 +377,81 @@ body {
     .container {
         padding: 0 1rem;
     }
-    
+
     .navbar {
         padding: 1rem;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: 0;
     }
-    
+
     .nav-links {
-        gap: 1rem;
+        gap: 0.5rem;
+        justify-content: flex-end;
     }
-    
+
+    .nav-links a {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .nav-links a i {
+        font-size: 0.875rem;
+    }
+
+    .nav-brand {
+        font-size: 1.25rem;
+    }
+
+    .nav-brand i {
+        font-size: 1rem;
+    }
+
     .article-card {
-        padding: 1.5rem;
+        padding: 1rem;
     }
-    
+
     .main-content {
         margin-top: 4rem;
+        padding: 1rem 0;
     }
-    
+
     .footer {
-        margin-top: 3rem;
-        padding: 1.5rem 0;
+        margin-top: 2rem;
+        padding: 1rem 0;
     }
-    
+
     .page-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .tag-card {
-        padding: 1.5rem;
+        padding: 0.75rem;
+    }
+
+    .tools-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tool-card {
+        padding: 1rem;
+        min-height: 180px;
+    }
+
+    .tool-title {
+        font-size: 1.1rem;
+    }
+
+    .tool-description {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    .tool-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
     }
 } 
