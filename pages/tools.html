@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具 - QLWS｜调温而行</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <style>
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tool-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: var(--bg-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .tool-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+            letter-spacing: -0.025em;
+        }
+
+        .tool-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .tool-link:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .no-tools {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏容器 -->
+        <div id="navbar-container"></div>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <h1 class="page-title">工具</h1>
+            <div class="tools-container" id="tools-container">
+                <!-- 工具列表将通过 JavaScript 动态加载 -->
+            </div>
+        </main>
+
+        <!-- 页脚容器 -->
+        <div id="footer-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script>
+        // 加载工具文章
+        async function loadTools() {
+            try {
+                const response = await fetch('/blog-index.yaml');
+                const text = await response.text();
+                const articles = jsyaml.load(text).articles;
+                
+                // 筛选带有"工具"标签的文章
+                const tools = articles.filter(article => 
+                    article.tags.some(tag => tag === "工具")
+                );
+
+                const container = document.getElementById('tools-container');
+                
+                if (tools.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-tools">
+                            暂无工具文章
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = tools.map(tool => {
+                    // 处理路径
+                    const href = tool.type === 'link' ? tool.url : tool.path;
+                    
+                    return `
+                        <div class="tool-card">
+                            <h2 class="tool-title">${tool.title}</h2>
+                            <p class="tool-description">${tool.description}</p>
+                            <a href="${href}" class="tool-link" target="_blank">
+                                使用工具
+                            </a>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading tools:', error);
+            }
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadTools);
+    </script>
+</body>
+</html>

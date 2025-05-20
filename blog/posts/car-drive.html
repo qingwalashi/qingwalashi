@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚗 小车移动动效</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            height: 80vh;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .point {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+        }
+        
+        .point:hover {
+            filter: brightness(1.2) drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));
+            transform: scale(1.1);
+        }
+        
+        .point-label {
+            font-weight: bold;
+            fill: white;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            font-size: 14px;
+            user-select: none;
+        }
+        
+        .main-path {
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 4;
+            stroke-linecap: round;
+            fill: none;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+        }
+        
+        .car {
+            fill: #ff3333;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+        }
+        
+        .flying-line {
+            stroke-dasharray: 10;
+            stroke-dashoffset: 1000;
+            stroke-linecap: round;
+            fill: none;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+            opacity: 0;
+        }
+        
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 1000;
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .credits {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        .float-animation {
+            animation: float 2s infinite ease-in-out;
+        }
+        
+        .point-group {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">🚗 小车移动动效</div>
+        <svg id="animation" viewBox="0 0 1000 600">
+            <!-- 定义渐变 -->
+            <defs>
+                <linearGradient id="gradient-A" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4CAF50" />
+                    <stop offset="100%" stop-color="#2E7D32" />
+                </linearGradient>
+                <linearGradient id="gradient-B" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2196F3" />
+                    <stop offset="100%" stop-color="#0D47A1" />
+                </linearGradient>
+                <linearGradient id="gradient-C" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9C27B0" />
+                    <stop offset="100%" stop-color="#6A1B9A" />
+                </linearGradient>
+                <linearGradient id="gradient-D" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF9800" />
+                    <stop offset="100%" stop-color="#E65100" />
+                </linearGradient>
+                <linearGradient id="gradient-E" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#E91E63" />
+                    <stop offset="100%" stop-color="#AD1457" />
+                </linearGradient>
+                <linearGradient id="gradient-F" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00BCD4" />
+                    <stop offset="100%" stop-color="#00838F" />
+                </linearGradient>
+                <linearGradient id="gradient-G" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FFEB3B" />
+                    <stop offset="100%" stop-color="#F57F17" />
+                </linearGradient>
+                
+                <!-- 定义发光效果 -->
+                <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+            </defs>
+            
+            <!-- 定义点 A、B、C 的连线路径 -->
+            <path id="main-path" class="main-path" d="M 200,300 L 500,300 L 800,300" />
+            
+            <!-- 点位 -->
+            <g id="points">
+                <!-- 主轨迹点 -->
+                <g id="pointGroupA" class="point-group">
+                    <circle id="pointA" class="point" cx="200" cy="300" r="20" fill="url(#gradient-A)" />
+                    <text class="point-label" x="200" y="300">A</text>
+                </g>
+                
+                <g id="pointGroupB" class="point-group">
+                    <circle id="pointB" class="point" cx="500" cy="300" r="20" fill="url(#gradient-B)" />
+                    <text class="point-label" x="500" y="300">B</text>
+                </g>
+                
+                <g id="pointGroupC" class="point-group">
+                    <circle id="pointC" class="point" cx="800" cy="300" r="20" fill="url(#gradient-C)" />
+                    <text class="point-label" x="800" y="300">C</text>
+                </g>
+                
+                <!-- 零星点位 -->
+                <g id="pointGroupD" class="point-group">
+                    <circle id="pointD" class="point" cx="350" cy="150" r="20" fill="url(#gradient-D)" />
+                    <text class="point-label" x="350" y="150">D</text>
+                </g>
+                
+                <g id="pointGroupE" class="point-group">
+                    <circle id="pointE" class="point" cx="650" cy="150" r="20" fill="url(#gradient-E)" />
+                    <text class="point-label" x="650" y="150">E</text>
+                </g>
+                
+                <g id="pointGroupF" class="point-group">
+                    <circle id="pointF" class="point" cx="350" cy="450" r="20" fill="url(#gradient-F)" />
+                    <text class="point-label" x="350" y="450">F</text>
+                </g>
+                
+                <g id="pointGroupG" class="point-group">
+                    <circle id="pointG" class="point" cx="650" cy="450" r="20" fill="url(#gradient-G)" />
+                    <text class="point-label" x="650" y="450">G</text>
+                </g>
+            </g>
+            
+            <!-- 飞线 -->
+            <g id="flying-lines">
+                <!-- A点的飞线 -->
+                <path id="A-to-D" class="flying-line" stroke="url(#gradient-A)" stroke-width="3" d="M 200,300 L 350,150" style="display: none;"></path>
+                <path id="A-to-E" class="flying-line" stroke="url(#gradient-A)" stroke-width="3" d="M 200,300 L 650,150" style="display: none;"></path>
+                <path id="A-to-F" class="flying-line" stroke="url(#gradient-A)" stroke-width="3" d="M 200,300 L 350,450" style="display: none;"></path>
+                <path id="A-to-G" class="flying-line" stroke="url(#gradient-A)" stroke-width="3" d="M 200,300 L 650,450" style="display: none;"></path>
+                
+                <!-- B点的飞线 -->
+                <path id="B-to-D" class="flying-line" stroke="url(#gradient-B)" stroke-width="3" d="M 500,300 L 350,150" style="display: none;"></path>
+                <path id="B-to-E" class="flying-line" stroke="url(#gradient-B)" stroke-width="3" d="M 500,300 L 650,150" style="display: none;"></path>
+                <path id="B-to-F" class="flying-line" stroke="url(#gradient-B)" stroke-width="3" d="M 500,300 L 350,450" style="display: none;"></path>
+                <path id="B-to-G" class="flying-line" stroke="url(#gradient-B)" stroke-width="3" d="M 500,300 L 650,450" style="display: none;"></path>
+                
+                <!-- C点的飞线 -->
+                <path id="C-to-D" class="flying-line" stroke="url(#gradient-C)" stroke-width="3" d="M 800,300 L 350,150" style="display: none;"></path>
+                <path id="C-to-E" class="flying-line" stroke="url(#gradient-C)" stroke-width="3" d="M 800,300 L 650,150" style="display: none;"></path>
+                <path id="C-to-F" class="flying-line" stroke="url(#gradient-C)" stroke-width="3" d="M 800,300 L 350,450" style="display: none;"></path>
+                <path id="C-to-G" class="flying-line" stroke="url(#gradient-C)" stroke-width="3" d="M 800,300 L 650,450" style="display: none;"></path>
+            </g>
+            
+            <!-- 小车 -->
+            <g id="car" transform="translate(200, 300) scale(1)" filter="url(#glow)">
+                <rect class="car" x="-20" y="-12" width="40" height="24" rx="8" ry="8" />
+                <circle class="car-wheel" cx="-10" cy="12" r="5" fill="#333" />
+                <circle class="car-wheel" cx="10" cy="12" r="5" fill="#333" />
+                <rect class="car-light" x="15" y="-6" width="5" height="4" fill="#FFEB3B" />
+                <rect class="car-light" x="15" y="2" width="5" height="4" fill="#FFEB3B" />
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取元素
+            const car = document.getElementById('car');
+            const points = [
+                { id: 'A', x: 200, y: 300 },
+                { id: 'B', x: 500, y: 300 },
+                { id: 'C', x: 800, y: 300 }
+            ];
+            
+            // 飞线配置
+            const flyingLines = {
+                'A': ['A-to-D', 'A-to-E', 'A-to-F', 'A-to-G'],
+                'B': ['B-to-D', 'B-to-E', 'B-to-F', 'B-to-G'],
+                'C': ['C-to-D', 'C-to-E', 'C-to-F', 'C-to-G']
+            };
+            
+            let currentPointIndex = 0;
+            let isMoving = false;
+            
+            // 停止所有飞线动画
+            function hideAllFlyingLines() {
+                document.querySelectorAll('.flying-line').forEach(line => {
+                    line.style.display = 'none';
+                    line.style.animation = 'none';
+                });
+                
+                // 移除所有点的浮动效果
+                document.querySelectorAll('.point-group').forEach(pointGroup => {
+                    pointGroup.classList.remove('float-animation');
+                });
+            }
+            
+            // 显示当前点的飞线
+            function showFlyingLines(pointId) {
+                hideAllFlyingLines();
+                
+                // 添加浮动效果到当前点组
+                document.getElementById('pointGroup' + pointId).classList.add('float-animation');
+                
+                const lines = flyingLines[pointId];
+                if (lines) {
+                    lines.forEach((lineId, index) => {
+                        setTimeout(() => {
+                            const line = document.getElementById(lineId);
+                            line.style.display = 'block';
+                            line.style.animation = 'dash 1s ease-out forwards';
+                            
+                            // 获取连接的零星点位ID
+                            const targetPointId = lineId.split('-to-')[1];
+                            document.getElementById('pointGroup' + targetPointId).classList.add('float-animation');
+                        }, index * 200); // 添加一点延迟，让飞线看起来是一个接一个出现的
+                    });
+                }
+            }
+            
+            // 移动小车
+            function moveCar() {
+                if (isMoving) return;
+                
+                isMoving = true;
+                hideAllFlyingLines();
+                
+                const currentPoint = points[currentPointIndex];
+                // 确定下一个点的索引，实现 A -> B -> C -> A 循环
+                const nextPointIndex = (currentPointIndex + 1) % points.length;
+                const nextPoint = points[nextPointIndex];
+                
+                // 计算旋转角度以便车头朝向前进方向
+                const dx = nextPoint.x - currentPoint.x;
+                let angle = dx >= 0 ? 0 : 180;
+                
+                // 特别处理从C点到A点的情况（循环的最后一段）
+                if (currentPointIndex === 2 && nextPointIndex === 0) {
+                    angle = 0;  // 保持原角度
+                    car.style.transform = `translate(${currentPoint.x}px, ${currentPoint.y}px) scale(-1, 1)`; // 水平翻转
+                }
+                
+                // 实现加速减速动画
+                const animation = car.animate([
+                    { transform: `translate(${currentPoint.x}px, ${currentPoint.y}px) scale(1) rotate(${angle}deg)` },
+                    { transform: `translate(${currentPoint.x * 0.75 + nextPoint.x * 0.25}px, ${currentPoint.y}px) scale(1) rotate(${angle}deg)`, offset: 0.3 },
+                    { transform: `translate(${currentPoint.x * 0.25 + nextPoint.x * 0.75}px, ${currentPoint.y}px) scale(1) rotate(${angle}deg)`, offset: 0.7 },
+                    { transform: `translate(${nextPoint.x}px, ${nextPoint.y}px) scale(1) rotate(${angle}deg)` }
+                ], {
+                    duration: 3000,
+                    easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)' // 加速然后减速
+                });
+                
+                animation.onfinish = function() {
+                    car.style.transform = `translate(${nextPoint.x}px, ${nextPoint.y}px) scale(1) rotate(${angle}deg)`;
+                    currentPointIndex = nextPointIndex;
+                    isMoving = false;
+                    
+                    // 显示当前点的飞线
+                    showFlyingLines(points[currentPointIndex].id);
+                    
+                    // 等待3秒后继续移动
+                    setTimeout(moveCar, 3000);
+                };
+            }
+            
+            // 初始化
+            car.style.transform = `translate(${points[0].x}px, ${points[0].y}px) scale(1)`;
+            showFlyingLines('A');
+            
+            // 开始动画
+            setTimeout(moveCar, 3000);
+            
+            // 点击点位时触发动效
+            document.querySelectorAll('.point').forEach(point => {
+                point.addEventListener('click', function() {
+                    const pointId = this.id.replace('point', '');
+                    showFlyingLines(pointId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

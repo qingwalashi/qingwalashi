@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签 - QLWS｜调温而行</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        .tags-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tag-card {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tag-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tag-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .tag-count {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .tag-articles {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .tag-article {
+            margin-bottom: 0.5rem;
+        }
+
+        .tag-article a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .tag-article a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏容器 -->
+        <div id="navbar-container"></div>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <h1 class="page-title">标签</h1>
+            <div class="tags-container" id="tags-container">
+                <!-- 标签列表将通过 JavaScript 动态加载 -->
+            </div>
+        </main>
+
+        <!-- 页脚容器 -->
+        <div id="footer-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/tags.js"></script>
+</body>
+</html> 
