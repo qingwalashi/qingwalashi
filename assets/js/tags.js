@@ -25,13 +25,18 @@ async function loadTags() {
                     <div class="tag-name">${tag}</div>
                     <div class="tag-count">${articles.length} 篇文章</div>
                     <div class="tag-articles">
-                        ${articles.map(article => `
+                        ${articles.map(article => {
+                            let path = article.path;
+                            if (article.type === 'md') {
+                                path = path.replace('.md', '.html');
+                            }
+                            return `
                             <div class="tag-article">
-                                <a href="${article.type === 'link' ? article.url : article.path}">
+                                <a href="${article.type === 'link' ? article.url : path}">
                                     ${article.title}
                                 </a>
                             </div>
-                        `).join('')}
+                        `}).join('')}
                     </div>
                 </div>
             `).join('');

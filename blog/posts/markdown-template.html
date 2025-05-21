@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLWS｜调温而行</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .markdown-body h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 1.5rem 0;
+            line-height: 1.4;
+            letter-spacing: -0.025em;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 1.25rem 0;
+            line-height: 1.4;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 1rem 0;
+            line-height: 1.4;
+        }
+
+        .markdown-body p {
+            margin: 1rem 0;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .markdown-body a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .markdown-body a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .markdown-body code {
+            background-color: var(--bg-secondary);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.875em;
+        }
+
+        .markdown-body pre {
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .markdown-body pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.875em;
+            line-height: 1.6;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid var(--primary-color);
+            margin: 1rem 0;
+            padding: 0.5rem 0 0.5rem 1rem;
+            color: var(--text-secondary);
+        }
+
+        .markdown-body ul, .markdown-body ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .markdown-body li {
+            margin: 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .markdown-body th, .markdown-body td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .markdown-body th {
+            background-color: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        .markdown-body tr:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 1rem;
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏容器 -->
+        <div id="navbar-container"></div>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <article class="markdown-body" id="content">
+                <!-- Markdown内容将通过JavaScript动态加载 -->
+            </article>
+        </main>
+
+        <!-- 页脚容器 -->
+        <div id="footer-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.2.0/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="/assets/js/components.js"></script>
+    <script>
+        // 配置marked选项
+        marked.setOptions({
+            breaks: true,  // 支持GitHub风格的换行
+            gfm: true,     // 启用GitHub风格的Markdown
+            headerIds: true, // 为标题添加id
+            mangle: false,  // 不转义标题中的特殊字符
+            sanitize: false // 允许HTML标签
+        });
+
+        // 加载组件
+        loadComponent('navbar', 'navbar-container');
+        loadComponent('footer', 'footer-container');
+
+        // 获取当前页面的Markdown文件路径
+        const mdPath = window.location.pathname.replace('.html', '.md');
+        
+        // 加载并渲染Markdown内容
+        fetch(mdPath)
+            .then(response => response.text())
+            .then(markdown => {
+                // 设置页面标题
+                const title = markdown.split('\n')[0].replace('# ', '');
+                document.title = `${title} - QLWS｜调温而行`;
+                
+                // 渲染Markdown内容
+                document.getElementById('content').innerHTML = marked.parse(markdown);
+            })
+            .catch(error => {
+                console.error('Error loading markdown:', error);
+                document.getElementById('content').innerHTML = '<h1>Error</h1><p>Failed to load content.</p>';
+            });
+    </script>
+</body>
+</html> 

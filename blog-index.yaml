@@ -6,14 +6,14 @@ articles:
   - title: "硅基流动模型资源库"
     date: "2024-05-20"
     description: "硅基流动模型资源库"
-    tags: ["工具","MaaS Platform"]
+    tags: ["MaaS Platform"]
     type: "link"
     url: "https://cloud.siliconflow.cn/models" 
 
   - title: "DeepSeek 开放平台"
     date: "2024-05-20"
     description: "DeepSeek 开放平台"
-    tags: ["工具","MaaS Platform"]
+    tags: ["MaaS Platform"]
     type: "link"
     url: "https://platform.deepseek.com/usage" 
 

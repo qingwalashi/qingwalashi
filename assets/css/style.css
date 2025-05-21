@@ -49,6 +49,11 @@ body {
     -webkit-backdrop-filter: blur(12px);
     box-shadow: var(--nav-shadow);
     transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
 }
 
 .nav-brand {
@@ -371,6 +376,77 @@ body {
     padding: 3rem;
     color: var(--text-secondary);
     font-size: 1.1rem;
+}
+
+/* 搜索框样式 */
+.search-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-left: 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+    background-color: var(--bg-color);
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+/* 标签云样式 */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.tag-cloud .tag {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-cloud .tag.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 搜索结果高亮 */
+.highlight {
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: 0.1em 0.2em;
+    border-radius: 4px;
+}
+
+/* 文章列表布局 */
+.articles-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .articles-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* 响应式设计 */
