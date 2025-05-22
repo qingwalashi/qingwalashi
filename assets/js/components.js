@@ -19,9 +19,19 @@ async function loadComponent(elementId, componentPath) {
         console.error(`Error loading component ${componentPath}:`, error);
     }
 }
-
+// 初始化百度统计
+function initBaiduAnalytics() {
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f1b574c8534c433188b1beb557854e43";  // 请替换为您的百度统计ID
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+}
 // 页面加载完成后加载组件
 document.addEventListener('DOMContentLoaded', () => {
     loadComponent('navbar-container', '/assets/components/navbar.html');
     loadComponent('footer-container', '/assets/components/footer.html');
+    initBaiduAnalytics();
 }); 
