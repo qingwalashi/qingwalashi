@@ -5,9 +5,30 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Tue, 20 May 2025 22:00:19 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 May 2025 14:29:35 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title><![CDATA[Project Graph 在线绘图]]></title>
+            <link>https://blog.qingwalashi.cnhttps://web.project-graph.top/</link>
+            <description><![CDATA[快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。]]></description>
+            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://web.project-graph.top/</guid>
+        </item>
+        <item>
+            <title><![CDATA[Mermaid 在线编辑器]]></title>
+            <link>https://blog.qingwalashi.cnhttps://mermaid.live/edit</link>
+            <description><![CDATA[基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。]]></description>
+            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://mermaid.live/edit</guid>
+        </item>
+        <item>
+            <title><![CDATA[AI 流程平台对比——Dify、Fastgpt、Ragflow #转发]]></title>
+            <link>https://blog.qingwalashi.cnhttps://zerozzz.win/ai-%E6%B5%81%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94dify%E3%80%81fastgpt%E3%80%81ragflow</link>
+            <description><![CDATA[本文对比了AI流程平台Dify、FastGPT和Ragflow的核心功能，涵盖团队管理、模型支持、工具扩展、知识库和应用编排等维度。Dify在应用管理和工作流设计上表现突出，支持灵活扩展；Ragflow主打知识库增强，擅长知识图谱和检索优化；FastGPT在模型兼容性和基础功能上较为均衡。测评基于最新版本展开，为不同业务场景提供选型参考，强调工具适配性优先于单一功能强弱。]]></description>
+            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://zerozzz.win/ai-%E6%B5%81%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94dify%E3%80%81fastgpt%E3%80%81ragflow</guid>
+        </item>
         <item>
             <title><![CDATA[硅基流动模型资源库]]></title>
             <link>https://blog.qingwalashi.cnhttps://cloud.siliconflow.cn/models</link>
@@ -24,24 +45,24 @@
         </item>
         <item>
             <title><![CDATA[🏥 3D医院设计——45°俯视超治愈！Blender渲染极简医疗空间✨]]></title>
-            <link>https://blog.qingwalashi.cn/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</link>
+            <link>https://blog.qingwalashi.cnblog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</link>
             <description><![CDATA[使用AIGC生成3D医院设计，生成Blender渲染风格的图片]]></description>
             <pubDate>Tue, 09 Apr 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cn/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</guid>
+            <guid>https://blog.qingwalashi.cnblog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</guid>
         </item>
         <item>
             <title><![CDATA[Markdown 转 Word 工具]]></title>
-            <link>https://blog.qingwalashi.cn/blog/posts/Markdown2Word.html</link>
+            <link>https://blog.qingwalashi.cnblog/posts/Markdown2Word.html</link>
             <description><![CDATA[一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。]]></description>
             <pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cn/blog/posts/Markdown2Word.html</guid>
+            <guid>https://blog.qingwalashi.cnblog/posts/Markdown2Word.html</guid>
         </item>
         <item>
             <title><![CDATA[杨氏双缝干涉光波长]]></title>
-            <link>https://blog.qingwalashi.cn/blog/posts/yang-double-slit-interference-light-wavelength.html</link>
+            <link>https://blog.qingwalashi.cnblog/posts/yang-double-slit-interference-light-wavelength.html</link>
             <description><![CDATA[基于AI编程，实现杨氏双缝干涉光波长实验]]></description>
             <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cn/blog/posts/yang-double-slit-interference-light-wavelength.html</guid>
+            <guid>https://blog.qingwalashi.cnblog/posts/yang-double-slit-interference-light-wavelength.html</guid>
         </item>
         <item>
             <title><![CDATA[🚗 小车移动动效]]></title>
