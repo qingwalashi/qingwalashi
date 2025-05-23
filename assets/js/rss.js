@@ -1,7 +1,7 @@
 // RSS生成脚本
 async function generateRSS() {
     try {
-        const response = await fetch('/blog-index.yaml');
+        const response = await fetch('./blog-index.yaml');
         const text = await response.text();
         const articles = jsyaml.load(text).articles;
         

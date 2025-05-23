@@ -31,7 +31,7 @@
         // 加载工具文章
         async function loadTools() {
             try {
-                const response = await fetch('/blog-index.yaml');
+                const response = await fetch('../blog-index.yaml');
                 const text = await response.text();
                 const articles = jsyaml.load(text).articles;
                 

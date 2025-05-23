@@ -1,7 +1,7 @@
 // 加载文章数据并处理标签
 async function loadTags() {
     try {
-        const response = await fetch('/blog-index.yaml');
+        const response = await fetch('./blog-index.yaml');
         const text = await response.text();
         const articles = jsyaml.load(text).articles;
         
