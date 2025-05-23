@@ -3,14 +3,14 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
-  - title: "Project Graph在线绘图"
+  - title: "Project Graph 在线绘图"
     date: "2024-05-23"
     description: "快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。"
     tags: ["工具"]
     type: "link"
     url: "https://web.project-graph.top/" 
   
-  - title: "Mermaid在线编辑器"
+  - title: "Mermaid 在线编辑器"
     date: "2024-05-23"
     description: "基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。"
     tags: ["工具"]
@@ -65,4 +65,3 @@ articles:
     tags: ["AI编程"]
     type: "html"
     path: "/blog/posts/car-drive.html"
-
