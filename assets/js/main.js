@@ -34,7 +34,7 @@ window.addEventListener('scroll', () => {
 // 加载文章数据
 async function loadArticles() {
     try {
-        const response = await fetch('../blog-index.yaml');
+        const response = await fetch('./blog-index.yaml');
         const text = await response.text();
         articles = jsyaml.load(text).articles;
         articles.sort((a, b) => new Date(b.date) - new Date(a.date));

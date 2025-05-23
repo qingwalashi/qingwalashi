@@ -64,4 +64,5 @@ articles:
     description: "基于AI编程，实现小车移动"
     tags: ["AI编程"]
     type: "html"
-    path: "blog/posts/car-drive.html"
+    path: "/blog/posts/car-drive.html"
+
