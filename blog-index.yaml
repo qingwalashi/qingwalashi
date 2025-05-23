@@ -43,25 +43,25 @@ articles:
     description: "使用AIGC生成3D医院设计，生成Blender渲染风格的图片"
     tags: ["AIGC"]
     type: "md"
-    path: "/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md"
+    path: "blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md"
 
   - title: "Markdown 转 Word 工具"
     date: "2024-03-20"
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     tags: ["工具"]
     type: "html"
-    path: "/blog/posts/Markdown2Word.html"
+    path: "blog/posts/Markdown2Word.html"
 
   - title: "杨氏双缝干涉光波长"
     date: "2024-03-19"
     description: "基于AI编程，实现杨氏双缝干涉光波长实验"
     tags: ["AI编程"]
     type: "html"
-    path: "/blog/posts/yang-double-slit-interference-light-wavelength.html"
+    path: "blog/posts/yang-double-slit-interference-light-wavelength.html"
 
   - title: "🚗 小车移动动效"
     date: "2024-03-18"
     description: "基于AI编程，实现小车移动"
     tags: ["AI编程"]
     type: "html"
-    path: "/blog/posts/car-drive.html"
+    path: "blog/posts/car-drive.html"
