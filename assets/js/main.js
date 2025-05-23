@@ -64,11 +64,25 @@ function renderArticles() {
         const title = highlightText(article.title, searchQuery);
         const description = highlightText(article.description, searchQuery);
 
+        // 根据文章类型添加emoji
+        let typeEmoji = '';
+        switch (article.type) {
+            case 'link':
+                typeEmoji = '🔗';
+                break;
+            case 'html':
+                typeEmoji = '🌐';
+                break;
+            case 'md':
+                typeEmoji = '📝';
+                break;
+        }
+
         return `
         <article class="article-card">
             <h2 class="article-title">
                 <a href="${article.type === 'link' ? article.url : path}">
-                    ${title}
+                    ${typeEmoji} ${title}
                 </a>
             </h2>
             <div class="article-meta">

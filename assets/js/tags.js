@@ -30,10 +30,25 @@ async function loadTags() {
                             if (article.type === 'md') {
                                 path = path.replace('.md', '.html');
                             }
+
+                            // 根据文章类型添加emoji
+                            let typeEmoji = '';
+                            switch (article.type) {
+                                case 'link':
+                                    typeEmoji = '🔗';
+                                    break;
+                                case 'html':
+                                    typeEmoji = '🌐';
+                                    break;
+                                case 'md':
+                                    typeEmoji = '📝';
+                                    break;
+                            }
+
                             return `
                             <div class="tag-article">
                                 <a href="${article.type === 'link' ? article.url : path}">
-                                    ${article.title}
+                                    ${typeEmoji} ${article.title}
                                 </a>
                             </div>
                         `}).join('')}

@@ -3,7 +3,22 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
-  - title: "AI 流程平台对比——Dify、Fastgpt、Ragflow【转发】"
+https://mermaid.live/edit
+  - title: "Project Graph在线绘图"
+    date: "2024-05-23"
+    description: "快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。"
+    tags: ["工具"]
+    type: "link"
+    url: "https://web.project-graph.top/" 
+  
+  - title: "Mermaid在线编辑器"
+    date: "2024-05-23"
+    description: "基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。"
+    tags: ["工具"]
+    type: "link"
+    url: "https://mermaid.live/edit" 
+
+  - title: "AI 流程平台对比——Dify、Fastgpt、Ragflow #转发"
     date: "2024-05-23"
     description: "本文对比了AI流程平台Dify、FastGPT和Ragflow的核心功能，涵盖团队管理、模型支持、工具扩展、知识库和应用编排等维度。Dify在应用管理和工作流设计上表现突出，支持灵活扩展；Ragflow主打知识库增强，擅长知识图谱和检索优化；FastGPT在模型兼容性和基础功能上较为均衡。测评基于最新版本展开，为不同业务场景提供选型参考，强调工具适配性优先于单一功能强弱。"
     tags: ["LLM"]
