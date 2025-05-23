@@ -3,6 +3,13 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
+  - title: "宁波阳光采购平台近期开标信息"
+    date: "2024-05-23"
+    description: "转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。"
+    tags: ["工具"]
+    type: "link"
+    url: "https://nbygcg.qingwalashi.cn/"
+  
   - title: "Project Graph 在线绘图"
     date: "2024-05-23"
     description: "快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。"
