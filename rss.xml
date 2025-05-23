@@ -5,9 +5,16 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Fri, 23 May 2025 14:29:35 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 May 2025 15:50:53 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title><![CDATA[宁波阳光采购平台近期开标信息]]></title>
+            <link>https://blog.qingwalashi.cnhttps://nbygcg.qingwalashi.cn/</link>
+            <description><![CDATA[转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。]]></description>
+            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://nbygcg.qingwalashi.cn/</guid>
+        </item>
         <item>
             <title><![CDATA[Project Graph 在线绘图]]></title>
             <link>https://blog.qingwalashi.cnhttps://web.project-graph.top/</link>
