@@ -146,6 +146,30 @@ body {
     border-color: var(--primary-color);
 }
 
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.article-date {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+    align-items: center;
+}
+
 .article-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -165,14 +189,6 @@ body {
     color: var(--primary-color);
 }
 
-.article-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
-    margin: 0;
-}
-
 .article-description {
     margin: 0;
     color: var(--text-secondary);
@@ -184,11 +200,29 @@ body {
     overflow: hidden;
 }
 
-.article-tags {
-    display: flex;
+.read-more {
+    display: inline-flex;
+    align-items: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
-    margin: 0;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.read-more i {
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover {
+    color: var(--primary-hover);
+}
+
+.read-more:hover i {
+    transform: translateX(4px);
 }
 
 .tag {
@@ -199,6 +233,9 @@ body {
     color: var(--primary-color);
     transition: all 0.2s ease;
     border: 1px solid var(--border-color);
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
 }
 
 .tag:hover {
@@ -354,22 +391,28 @@ body {
 }
 
 .tool-link {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.2s ease;
     font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.3s ease;
     align-self: flex-start;
     margin-top: auto;
 }
 
+.tool-link i {
+    transition: transform 0.3s ease;
+}
+
 .tool-link:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
-    opacity: 0.85;
+    color: var(--primary-hover);
+}
+
+.tool-link:hover i {
+    transform: translateX(4px);
 }
 
 .no-tools {

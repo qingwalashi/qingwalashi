@@ -80,23 +80,26 @@ function renderArticles() {
 
         return `
         <article class="article-card">
+            <div class="article-meta">
+                <span class="article-date">${formatDate(article.date)}</span>
+                <div class="article-tags">
+                    ${article.tags.map(tag => `
+                        <span class="tag ${tag === selectedTag ? 'active' : ''}" 
+                              onclick="filterByTag('${tag}')">
+                            ${tag}
+                        </span>
+                    `).join('')}
+                </div>
+            </div>
             <h2 class="article-title">
                 <a href="${article.type === 'link' ? article.url : path}">
                     ${typeEmoji} ${title}
                 </a>
             </h2>
-            <div class="article-meta">
-                <span>${formatDate(article.date)}</span>
-            </div>
             <p class="article-description">${description}</p>
-            <div class="article-tags">
-                ${article.tags.map(tag => `
-                    <span class="tag ${tag === selectedTag ? 'active' : ''}" 
-                          onclick="filterByTag('${tag}')">
-                        ${tag}
-                    </span>
-                `).join('')}
-            </div>
+            <a href="${article.type === 'link' ? article.url : path}" class="read-more">
+                阅读全文 <i class="fas fa-arrow-right"></i>
+            </a>
         </article>`;
     }).join('');
 }
