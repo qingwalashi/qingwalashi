@@ -53,7 +53,7 @@
 
                 container.innerHTML = tools.map(tool => {
                     // 处理路径
-                    const href = tool.type === 'link' ? tool.url : tool.path;
+                    const href = tool.type === 'link' ? tool.url : '../' + tool.path;
                     
                     return `
                         <div class="tool-card">

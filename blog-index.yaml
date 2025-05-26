@@ -56,8 +56,8 @@ articles:
     date: "2024-03-20"
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     tags: ["工具"]
-    type: "html"
-    path: "blog/posts/Markdown2Word.html"
+    type: "link"
+    path: "https://md2docx.qingwalashi.cn"
 
   - title: "杨氏双缝干涉光波长"
     date: "2024-03-19"
@@ -71,5 +71,5 @@ articles:
     description: "基于AI编程，实现小车移动"
     tags: ["AI编程"]
     type: "html"
-    path: "/blog/posts/car-drive.html"
+    path: "blog/posts/car-drive.html"
 
