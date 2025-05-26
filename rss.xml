@@ -5,7 +5,7 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Sun, 25 May 2025 13:16:49 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 May 2025 11:58:43 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
         <item>
@@ -52,24 +52,24 @@
         </item>
         <item>
             <title><![CDATA[🏥 3D医院设计——45°俯视超治愈！Blender渲染极简医疗空间✨]]></title>
-            <link>https://blog.qingwalashi.cnblog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</link>
+            <link>https://blog.qingwalashi.cn/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</link>
             <description><![CDATA[使用AIGC生成3D医院设计，生成Blender渲染风格的图片]]></description>
             <pubDate>Tue, 09 Apr 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnblog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</guid>
+            <guid>https://blog.qingwalashi.cn/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</guid>
         </item>
         <item>
             <title><![CDATA[Markdown 转 Word 工具]]></title>
-            <link>https://blog.qingwalashi.cnblog/posts/Markdown2Word.html</link>
+            <link>https://blog.qingwalashi.cnhttps://md2docx.qingwalashi.cn</link>
             <description><![CDATA[一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。]]></description>
             <pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnblog/posts/Markdown2Word.html</guid>
+            <guid>https://blog.qingwalashi.cnhttps://md2docx.qingwalashi.cn</guid>
         </item>
         <item>
             <title><![CDATA[杨氏双缝干涉光波长]]></title>
-            <link>https://blog.qingwalashi.cnblog/posts/yang-double-slit-interference-light-wavelength.html</link>
+            <link>https://blog.qingwalashi.cn/blog/posts/yang-double-slit-interference-light-wavelength.html</link>
             <description><![CDATA[基于AI编程，实现杨氏双缝干涉光波长实验]]></description>
             <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnblog/posts/yang-double-slit-interference-light-wavelength.html</guid>
+            <guid>https://blog.qingwalashi.cn/blog/posts/yang-double-slit-interference-light-wavelength.html</guid>
         </item>
         <item>
             <title><![CDATA[🚗 小车移动动效]]></title>
