@@ -57,7 +57,7 @@ articles:
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     tags: ["工具"]
     type: "link"
-    path: "https://md2docx.qingwalashi.cn"
+    url: "https://md2docx.qingwalashi.cn"
 
   - title: "杨氏双缝干涉光波长"
     date: "2024-03-19"
