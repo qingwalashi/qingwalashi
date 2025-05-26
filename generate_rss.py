@@ -26,7 +26,14 @@ def generate_rss():
     
     # 添加文章条目
     for article in articles:
-        link = article['url'] if article['type'] == 'link' else article['path']
+        # 根据文章类型获取链接
+        if article['type'] == 'link':
+            link = article['url']
+        elif article['type'] in ['html', 'md']:
+            link = '/' + article['path']
+        else:
+            continue  # 跳过不支持的类型
+        
         pub_date = datetime.datetime.strptime(article['date'], '%Y-%m-%d').strftime('%a, %d %b %Y %H:%M:%S GMT')
         
         rss_content += f'''
