@@ -5,44 +5,9 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Wed, 28 May 2025 13:40:23 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 28 May 2025 13:57:29 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
-        <item>
-            <title><![CDATA[MinerU]]></title>
-            <link>https://blog.qingwalashi.cnhttps://mineru.net/</link>
-            <description><![CDATA[MinerU 免费全能的文档解析神器]]></description>
-            <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://mineru.net/</guid>
-        </item>
-        <item>
-            <title><![CDATA[Dify 工作室]]></title>
-            <link>https://blog.qingwalashi.cnhttps://cloud.dify.ai/apps</link>
-            <description><![CDATA[Dify 云平台，提供 AI 应用开发、部署和管理的一站式解决方案。]]></description>
-            <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://cloud.dify.ai/apps</guid>
-        </item>
-        <item>
-            <title><![CDATA[宁波阳光采购平台近期开标信息]]></title>
-            <link>https://blog.qingwalashi.cnhttps://nbygcg.qingwalashi.cn/</link>
-            <description><![CDATA[转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。]]></description>
-            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://nbygcg.qingwalashi.cn/</guid>
-        </item>
-        <item>
-            <title><![CDATA[Project Graph 在线绘图]]></title>
-            <link>https://blog.qingwalashi.cnhttps://web.project-graph.top/</link>
-            <description><![CDATA[快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。]]></description>
-            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://web.project-graph.top/</guid>
-        </item>
-        <item>
-            <title><![CDATA[Mermaid 在线编辑器]]></title>
-            <link>https://blog.qingwalashi.cnhttps://mermaid.live/edit</link>
-            <description><![CDATA[基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。]]></description>
-            <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://mermaid.live/edit</guid>
-        </item>
         <item>
             <title><![CDATA[AI 流程平台对比——Dify、Fastgpt、Ragflow #转发]]></title>
             <link>https://blog.qingwalashi.cnhttps://zerozzz.win/ai-%E6%B5%81%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94dify%E3%80%81fastgpt%E3%80%81ragflow</link>
@@ -70,13 +35,6 @@
             <description><![CDATA[使用AIGC生成3D医院设计，生成Blender渲染风格的图片]]></description>
             <pubDate>Tue, 09 Apr 2024 00:00:00 GMT</pubDate>
             <guid>https://blog.qingwalashi.cn/blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md</guid>
-        </item>
-        <item>
-            <title><![CDATA[Markdown 转 Word 工具]]></title>
-            <link>https://blog.qingwalashi.cnhttps://md2docx.qingwalashi.cn</link>
-            <description><![CDATA[一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。]]></description>
-            <pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://md2docx.qingwalashi.cn</guid>
         </item>
         <item>
             <title><![CDATA[杨氏双缝干涉光波长]]></title>
