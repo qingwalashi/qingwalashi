@@ -11,13 +11,18 @@
 ├── 404.html                       # 404错误页面
 ├── tags.html                      # 标签页面
 ├── blog-index.yaml               # 博客文章索引配置
+├── tools-index.yaml              # 工具页面索引配置
+├── resources-index.yaml          # 资源页面索引配置
 ├── rss.xml                       # RSS订阅源
 ├── edgeone.json                  # EdgeOne配置文件
 ├── favicon.ico                   # 网站图标
+├── requirements.txt              # Python依赖配置
 ├── generate_rss.py               # RSS生成脚本
 ├── generate_md_pages.py          # Markdown页面生成脚本
 ├── pages/                        # 存放工具页面
 │   └── tools.html                # 工具页面
+├── resources/                    # 资源相关文件
+│   └── *.html                    # 资源页面
 ├── blog/                         # 博客相关文件
 │   └── posts/                    # 博客文章目录
 │       ├── markdown-template.html # Markdown渲染模板
@@ -84,11 +89,34 @@ python3 generate_md_pages.py
 3. 运行 `generate_md_pages.py` 生成HTML页面
 4. 运行 `generate_rss.py` 更新RSS订阅源
 
+## 工具页面管理
+
+1. 在 `pages` 目录下创建工具页面
+2. 在 `tools-index.yaml` 中添加工具信息：
+   ```yaml
+   tools:
+     - title: "工具名称"
+       description: "工具描述"
+       path: "/pages/tool-name.html"
+   ```
+
+## 资源页面管理
+
+1. 在 `resources` 目录下创建资源页面
+2. 在 `resources-index.yaml` 中添加资源信息：
+   ```yaml
+   resources:
+     - title: "资源名称"
+       description: "资源描述"
+       path: "/resources/resource-name.html"
+   ```
+
 ## 开发说明
 
 - 使用纯静态HTML/CSS/JavaScript构建
 - 支持Markdown文章渲染
 - 响应式设计，适配移动设备
 - 支持RSS订阅
-- 使用YAML管理文章索引
+- 使用YAML管理文章、工具和资源索引
 - 组件化设计，易于维护和扩展
+- 使用Python脚本自动化内容生成

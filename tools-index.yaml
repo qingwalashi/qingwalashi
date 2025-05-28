@@ -4,8 +4,14 @@ tools:
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     type: "link"
     url: "https://md2docx.qingwalashi.cn"
-    repo: "https://github.com/qingwalashi/MD2DOCX" 
-
+    repo: "https://github.com/qingwalashi/MD2DOCX"
+    
+  - title: "合同金额转换工具"
+    description: "快速计算合同金额、税额及生成中文大写金额。"
+    type: "link"
+    url: "https://amountconvert.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/AmountConvert"
+  
   - title: "宁波阳光采购平台近期开标信息"
     description: "转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。"
     type: "link"
