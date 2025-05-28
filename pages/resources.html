@@ -8,327 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <style>
-        .resources-container {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .resource-section {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--card-shadow);
-        }
-        
-        .resource-section h2 {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        
-        .resource-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--card-shadow-hover);
-            border-color: var(--primary-color);
-        }
-        
-        .resource-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .resource-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .resource-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .resource-tag {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-        
-        .resource-content {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1rem;
-            margin-top: 1rem;
-            font-family: monospace;
-            white-space: pre-wrap;
-            font-size: 0.9rem;
-            color: var(--text-color);
-            max-height: 300px;
-            overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-color) var(--bg-secondary);
-            position: relative;
-        }
-
-        /* 自定义滚动条样式 */
-        .resource-content::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .resource-content::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-            border-radius: 4px;
-        }
-
-        .resource-content::-webkit-scrollbar-thumb {
-            background: var(--primary-color);
-            border-radius: 4px;
-        }
-
-        .resource-content::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-hover);
-        }
-
-        .copy-button {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .resource-content:hover .copy-button {
-            opacity: 1;
-        }
-
-        .copy-button:hover {
-            background: var(--primary-hover);
-        }
-
-        .copy-button.copied {
-            background: #10b981;
-        }
-
-        .copy-button i {
-            font-size: 0.9rem;
-        }
-
-        /* URL复制按钮样式 */
-        .url-copy-button {
-            position: absolute;
-            top: 0.5rem;
-            right: 12rem;
-            background: var(--bg-secondary);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            opacity: 0;
-            transition: all 0.2s ease;
-            z-index: 1;
-        }
-
-        .resource-content:hover .url-copy-button {
-            opacity: 1;
-        }
-
-        .url-copy-button:hover {
-            background: var(--hover-color);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .url-copy-button.copied {
-            background: #10b981;
-            color: white;
-            border-color: #10b981;
-        }
-
-        /* JSON 语法高亮样式 */
-        .hljs {
-            background: transparent !important;
-            padding: 0 !important;
-        }
-
-        .hljs-attr {
-            color: #0550ae !important;
-        }
-
-        .hljs-string {
-            color: #0d7b6c !important;
-        }
-
-        .hljs-number {
-            color: #0550ae !important;
-        }
-
-        .hljs-literal {
-            color: #0550ae !important;
-        }
-
-        .hljs-punctuation {
-            color: #24292e !important;
-        }
-
-        /* 预览按钮样式 */
-        .preview-button {
-            position: absolute;
-            top: 0.5rem;
-            right: 6rem;
-            background: var(--bg-secondary);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            opacity: 0;
-            transition: all 0.2s ease;
-            z-index: 1;
-        }
-
-        .resource-content:hover .preview-button {
-            opacity: 1;
-        }
-
-        .preview-button:hover {
-            background: var(--hover-color);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        /* 弹窗样式 */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.show {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: var(--bg-color);
-            border-radius: 12px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            margin: auto;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-color);
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--hover-color);
-            color: var(--text-color);
-        }
-
-        .modal-body {
-            padding: 1rem;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-
-        .modal-body pre {
-            margin: 0;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-
-        .modal-body code {
-            font-family: monospace;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -352,9 +31,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title"></div>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="modal-actions">
+                    <button class="modal-button" id="modal-copy-button">
+                        <i class="fas fa-copy"></i> 复制内容
+                    </button>
+                    <button class="modal-button" id="modal-url-button" style="display: none;">
+                        <i class="fas fa-link"></i> 复制链接
+                    </button>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
             <div class="modal-body"></div>
         </div>
@@ -504,6 +191,8 @@
                     const modal = document.getElementById('preview-modal');
                     const modalTitle = modal.querySelector('.modal-title');
                     const modalBody = modal.querySelector('.modal-body');
+                    const modalCopyButton = document.getElementById('modal-copy-button');
+                    const modalUrlButton = document.getElementById('modal-url-button');
                     
                     modalTitle.textContent = resource.name;
                     
@@ -541,60 +230,54 @@
                     modalBody.innerHTML = '';
                     modalBody.appendChild(previewContent);
                     
+                    // 设置复制按钮事件
+                    modalCopyButton.onclick = async () => {
+                        try {
+                            await navigator.clipboard.writeText(resource.content);
+                            modalCopyButton.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                            modalCopyButton.classList.add('copied');
+                            setTimeout(() => {
+                                modalCopyButton.innerHTML = '<i class="fas fa-copy"></i> 复制内容';
+                                modalCopyButton.classList.remove('copied');
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                            modalCopyButton.innerHTML = '<i class="fas fa-times"></i> 复制失败';
+                            setTimeout(() => {
+                                modalCopyButton.innerHTML = '<i class="fas fa-copy"></i> 复制内容';
+                            }, 2000);
+                        }
+                    };
+
+                    // 如果是Dify DSL，显示并设置URL复制按钮
+                    if (resource.file && resource.file.includes('dify_dsl')) {
+                        modalUrlButton.style.display = 'flex';
+                        modalUrlButton.onclick = async () => {
+                            try {
+                                const fileUrl = `${window.location.origin}/resources/${resource.file}`;
+                                await navigator.clipboard.writeText(fileUrl);
+                                modalUrlButton.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                                modalUrlButton.classList.add('copied');
+                                setTimeout(() => {
+                                    modalUrlButton.innerHTML = '<i class="fas fa-link"></i> 复制链接';
+                                    modalUrlButton.classList.remove('copied');
+                                }, 2000);
+                            } catch (err) {
+                                console.error('Failed to copy URL: ', err);
+                                modalUrlButton.innerHTML = '<i class="fas fa-times"></i> 复制失败';
+                                setTimeout(() => {
+                                    modalUrlButton.innerHTML = '<i class="fas fa-link"></i> 复制链接';
+                                }, 2000);
+                            }
+                        };
+                    } else {
+                        modalUrlButton.style.display = 'none';
+                    }
+                    
                     modal.classList.add('show');
                 });
                 
                 contentWrapper.appendChild(previewButton);
-
-                // 如果是Dify DSL，添加URL复制按钮
-                if (resource.file && resource.file.includes('dify_dsl')) {
-                    const urlCopyButton = document.createElement('button');
-                    urlCopyButton.className = 'url-copy-button';
-                    urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
-                    urlCopyButton.addEventListener('click', async () => {
-                        try {
-                            const fileUrl = `${window.location.origin}/resources/${resource.file}`;
-                            await navigator.clipboard.writeText(fileUrl);
-                            urlCopyButton.innerHTML = '<i class="fas fa-check"></i> 已复制';
-                            urlCopyButton.classList.add('copied');
-                            setTimeout(() => {
-                                urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
-                                urlCopyButton.classList.remove('copied');
-                            }, 2000);
-                        } catch (err) {
-                            console.error('Failed to copy URL: ', err);
-                            urlCopyButton.innerHTML = '<i class="fas fa-times"></i> 复制失败';
-                            setTimeout(() => {
-                                urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
-                            }, 2000);
-                        }
-                    });
-                    contentWrapper.appendChild(urlCopyButton);
-                }
-
-                // 添加复制按钮
-                const copyButton = document.createElement('button');
-                copyButton.className = 'copy-button';
-                copyButton.innerHTML = '<i class="fas fa-copy"></i> 复制';
-                copyButton.addEventListener('click', async () => {
-                    try {
-                        await navigator.clipboard.writeText(resource.content);
-                        copyButton.innerHTML = '<i class="fas fa-check"></i> 已复制';
-                        copyButton.classList.add('copied');
-                        setTimeout(() => {
-                            copyButton.innerHTML = '<i class="fas fa-copy"></i> 复制';
-                            copyButton.classList.remove('copied');
-                        }, 2000);
-                    } catch (err) {
-                        console.error('Failed to copy text: ', err);
-                        copyButton.innerHTML = '<i class="fas fa-times"></i> 复制失败';
-                        setTimeout(() => {
-                            copyButton.innerHTML = '<i class="fas fa-copy"></i> 复制';
-                        }, 2000);
-                    }
-                });
-                
-                contentWrapper.appendChild(copyButton);
                 card.appendChild(contentWrapper);
             }
             

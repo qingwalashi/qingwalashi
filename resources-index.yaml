@@ -3,7 +3,7 @@ resources:
   # 大模型提示词
   prompts:
     - name: "项目月报生成助手"
-      description: "自动生成规范化的项目月报，可基于钉钉导出的日报数据整理"
+      description: "自动生成规范化的项目月报，支持钉钉导出的日报数据整理"
       content: |
         # 项目月报生成指令
         指令：
@@ -40,14 +40,17 @@ resources:
         4. 缺失日期的数据单独归类为"未明确周期工作"
       tags: ["项目管理", "报告生成", "数据分析"]
 
-    - name: "通用写作助手（示例）"
-      description: "帮助改进文章结构和表达"
+    - name: "静态前端项目模板"
+      description: "创建一个纯静态前端项目，使用 HTML + Tailwind CSS"
       content: |
-        你是一个专业的写作助手，请帮我：
-        1. 检查文章结构是否合理
-        2. 改进表达方式，使文章更流畅
-        3. 提供具体的修改建议
-      tags: ["写作", "AI助手"]
+        创建一个纯静态前端项目，使用 HTML + Tailwind CSS（通过 CDN 引入），不依赖 React/Vue 等框架。要求包括：
+
+        基础 HTML5 模板结构
+        通过 <script src> 引入 Tailwind CSS 最新版本
+        纯原生实现（无第三方库），代码干净且有注释
+        包含干净的目录结构建议（如 index.html、css/style.css、js/main.js）
+        响应式设计，适配移动端
+      tags: ["前端开发", "HTML", "Tailwind CSS"]
 
   # Dify DSL
   dify_dsl:
