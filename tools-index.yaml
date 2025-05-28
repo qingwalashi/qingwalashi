@@ -1,5 +1,16 @@
 # 工具索引文件
+# - title: "填写标题"
+#     description: "填写描述"
+#     type: "link"
+#     url: "填写跳转的 url"
+#     repo: "如没有，删掉此行"
+
 tools:
+  - title: "个人项目管理看板"
+      description: "依托简道云建立的项目进度看板，输入密码后查看"
+      type: "link"
+      url: "https://trhj7w84un.jiandaoyun.com/dash/683873b564f1c0fc3251192a"
+
   - title: "Markdown 转 Word 工具"
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     type: "link"
