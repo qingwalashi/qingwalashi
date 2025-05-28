@@ -147,6 +147,42 @@
             font-size: 0.9rem;
         }
 
+        /* URL复制按钮样式 */
+        .url-copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 12rem;
+            background: var(--bg-secondary);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            opacity: 0;
+            transition: all 0.2s ease;
+            z-index: 1;
+        }
+
+        .resource-content:hover .url-copy-button {
+            opacity: 1;
+        }
+
+        .url-copy-button:hover {
+            background: var(--hover-color);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .url-copy-button.copied {
+            background: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
         /* JSON 语法高亮样式 */
         .hljs {
             background: transparent !important;
@@ -177,7 +213,7 @@
         .preview-button {
             position: absolute;
             top: 0.5rem;
-            right: 5rem;
+            right: 6rem;
             background: var(--bg-secondary);
             color: var(--text-color);
             border: 1px solid var(--border-color);
@@ -472,6 +508,32 @@
                 });
                 
                 contentWrapper.appendChild(previewButton);
+
+                // 如果是Dify DSL，添加URL复制按钮
+                if (resource.file && resource.file.includes('dify_dsl')) {
+                    const urlCopyButton = document.createElement('button');
+                    urlCopyButton.className = 'url-copy-button';
+                    urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
+                    urlCopyButton.addEventListener('click', async () => {
+                        try {
+                            const fileUrl = `${window.location.origin}/resources/${resource.file}`;
+                            await navigator.clipboard.writeText(fileUrl);
+                            urlCopyButton.innerHTML = '<i class="fas fa-check"></i> 已复制';
+                            urlCopyButton.classList.add('copied');
+                            setTimeout(() => {
+                                urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
+                                urlCopyButton.classList.remove('copied');
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy URL: ', err);
+                            urlCopyButton.innerHTML = '<i class="fas fa-times"></i> 复制失败';
+                            setTimeout(() => {
+                                urlCopyButton.innerHTML = '<i class="fas fa-link"></i> 复制URL';
+                            }, 2000);
+                        }
+                    });
+                    contentWrapper.appendChild(urlCopyButton);
+                }
 
                 // 添加复制按钮
                 const copyButton = document.createElement('button');
