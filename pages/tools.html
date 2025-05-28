@@ -31,15 +31,10 @@
         // 加载工具文章
         async function loadTools() {
             try {
-                const response = await fetch('../blog-index.yaml');
+                const response = await fetch('../tools-index.yaml');
                 const text = await response.text();
-                const articles = jsyaml.load(text).articles;
+                const tools = jsyaml.load(text).tools;
                 
-                // 筛选带有"工具"标签的文章
-                const tools = articles.filter(article => 
-                    article.tags.some(tag => tag === "工具")
-                );
-
                 const container = document.getElementById('tools-container');
                 
                 if (tools.length === 0) {

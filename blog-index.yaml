@@ -3,42 +3,6 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
-  - title: "MinerU"
-    date: "2024-05-28"
-    description: "MinerU 免费全能的文档解析神器"
-    tags: ["工具"]
-    type: "link"
-    url: "https://mineru.net/"
-  
-  - title: "Dify 工作室"
-    date: "2024-05-28"
-    description: "Dify 云平台，提供 AI 应用开发、部署和管理的一站式解决方案。"
-    tags: ["工具","LLMIOps平台"]
-    type: "link"
-    url: "https://cloud.dify.ai/apps"
-
-  - title: "宁波阳光采购平台近期开标信息"
-    date: "2024-05-23"
-    description: "转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。"
-    tags: ["工具"]
-    type: "link"
-    url: "https://nbygcg.qingwalashi.cn/"
-    repo: "https://github.com/qingwalashi/nbygcg"  
-  
-  - title: "Project Graph 在线绘图"
-    date: "2024-05-23"
-    description: "快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。"
-    tags: ["工具"]
-    type: "link"
-    url: "https://web.project-graph.top/" 
-  
-  - title: "Mermaid 在线编辑器"
-    date: "2024-05-23"
-    description: "基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。"
-    tags: ["工具"]
-    type: "link"
-    url: "https://mermaid.live/edit" 
-
   - title: "AI 流程平台对比——Dify、Fastgpt、Ragflow #转发"
     date: "2024-05-23"
     description: "本文对比了AI流程平台Dify、FastGPT和Ragflow的核心功能，涵盖团队管理、模型支持、工具扩展、知识库和应用编排等维度。Dify在应用管理和工作流设计上表现突出，支持灵活扩展；Ragflow主打知识库增强，擅长知识图谱和检索优化；FastGPT在模型兼容性和基础功能上较为均衡。测评基于最新版本展开，为不同业务场景提供选型参考，强调工具适配性优先于单一功能强弱。"
@@ -66,14 +30,6 @@ articles:
     tags: ["AIGC"]
     type: "md"
     path: "blog/posts/3d-hospital-design-45-degree-overhead-view-blender-render.md"
-
-  - title: "Markdown 转 Word 工具"
-    date: "2024-03-20"
-    description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
-    tags: ["工具"]
-    type: "link"
-    url: "https://md2docx.qingwalashi.cn"
-    repo: "https://github.com/qingwalashi/MD2DOCX"
 
   - title: "杨氏双缝干涉光波长"
     date: "2024-03-19"
