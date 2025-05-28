@@ -5,9 +5,23 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Wed, 28 May 2025 13:18:51 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 28 May 2025 13:40:23 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
+        <item>
+            <title><![CDATA[MinerU]]></title>
+            <link>https://blog.qingwalashi.cnhttps://mineru.net/</link>
+            <description><![CDATA[MinerU 免费全能的文档解析神器]]></description>
+            <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://mineru.net/</guid>
+        </item>
+        <item>
+            <title><![CDATA[Dify 工作室]]></title>
+            <link>https://blog.qingwalashi.cnhttps://cloud.dify.ai/apps</link>
+            <description><![CDATA[Dify 云平台，提供 AI 应用开发、部署和管理的一站式解决方案。]]></description>
+            <pubDate>Tue, 28 May 2024 00:00:00 GMT</pubDate>
+            <guid>https://blog.qingwalashi.cnhttps://cloud.dify.ai/apps</guid>
+        </item>
         <item>
             <title><![CDATA[宁波阳光采购平台近期开标信息]]></title>
             <link>https://blog.qingwalashi.cnhttps://nbygcg.qingwalashi.cn/</link>
