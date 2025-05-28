@@ -55,10 +55,18 @@
                     // 处理路径
                     const href = tool.type === 'link' ? tool.url : '../' + tool.path;
                     
+                    // 添加 GitHub 图标（如果有 repo 链接）
+                    const githubIcon = tool.repo ? `
+                        <a href="${tool.repo}" class="tool-github" target="_blank" title="查看源码">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    ` : '';
+                    
                     return `
                         <div class="tool-card">
                             <div>
                                 <h2 class="tool-title">${tool.title}</h2>
+                                ${githubIcon}
                                 <p class="tool-description">${tool.description}</p>
                             </div>
                             <a href="${href}" class="tool-link" target="_blank">

@@ -367,6 +367,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 200px;
+    position: relative;
 }
 
 .tool-card:hover {
@@ -381,6 +382,23 @@ body {
     margin-bottom: 0.75rem;
     color: var(--text-color);
     letter-spacing: -0.025em;
+    padding-right: 2rem;
+}
+
+/* GitHub 图标样式 */
+.tool-github {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.tool-github:hover {
+    color: #24292e;
+    transform: scale(1.1);
 }
 
 .tool-description {
