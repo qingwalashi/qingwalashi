@@ -1,0 +1,534 @@
+app:
+  description: 上传采购合同正文，识别合同内容并进行信创合规判断
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 信创合规检查（文字发送版）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 1
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1744808296034-source-1744810851984-target
+      source: '1744808296034'
+      sourceHandle: source
+      target: '1744810851984'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: if-else
+      id: 1744810851984-source-1744812806545-target
+      source: '1744810851984'
+      sourceHandle: source
+      target: '1744812806545'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744812806545-true-1744811402034-target
+      source: '1744812806545'
+      sourceHandle: 'true'
+      target: '1744811402034'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744812806545-true-17448138643320-target
+      source: '1744812806545'
+      sourceHandle: 'true'
+      target: '17448138643320'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: llm
+      id: 1744812806545-true-17448141996220-target
+      source: '1744812806545'
+      sourceHandle: 'true'
+      target: '17448141996220'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1744811402034-source-1744892477257-target
+      source: '1744811402034'
+      sourceHandle: source
+      target: '1744892477257'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17448138643320-source-1744892477257-target
+      source: '17448138643320'
+      sourceHandle: source
+      target: '1744892477257'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17448141996220-source-1744892477257-target
+      source: '17448141996220'
+      sourceHandle: source
+      target: '1744892477257'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1744807216944-source-1744808296034-target
+      source: '1744807216944'
+      sourceHandle: source
+      target: '1744808296034'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1744892477257-source-1744892344583-target
+      source: '1744892477257'
+      sourceHandle: source
+      target: '1744892344583'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: content
+          max_length: 100000
+          options: []
+          required: true
+          type: paragraph
+          variable: content
+      height: 90
+      id: '1744807216944'
+      position:
+        x: 30
+        y: 263
+      positionAbsolute:
+        x: 30
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            response_format: json_object
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - edition_type: basic
+          id: e0f23ddf-59f7-440c-9338-6b69b2be9c38
+          role: system
+          text: "# 采购内容分类\n\n作为资深采购专员，你将提取采购文件{{#1744807216944.content#}}的采购内容，识别并总结采购内容里的硬件采购部分（hardware_purchase）、成品软件采购部分（software_purchase）、定制化系统采购部分（custom_system_development）\n\
+            \n## 特殊说明\n1.回答结果不需要假设，内容均来自我提供的数据\n2.如果原文不包含硬件采购部分（hardware_purchase）、成品软件采购部分（software_purchase）、定制化系统采购部分（custom_system_development）的其中一个或几个部分，则对应的\
+            \ json 字段返回“不涉及”\n\n## 输出格式和字段说明\n请使用JavaScript以JSON格式输出优化后的分析结果，包含以下字段：\n\
+            \n```json\n{\n  \"hardware_purchase\": \"硬件采购部分内容及其主要参数\",\n  \"software_purchase\"\
+            : \"成品软件采购部分及其主要参数\",\n  \"custom_system_development\": \"定制化系统采购部分及其主要参数\"\
+            \n}\n```\n\n## 输出示例\n```json\n{\n  \"hardware_purchase\": \"采购了服务器3台（CPU：intel\
+            \ x86架构 内存：16G 核心数量：8）、交换机等网络设备5台、安全设备硬件6台\",\n  \"software_purchase\"\
+            : \"采购了统信操作系统、达梦数据库成品软件\",\n  \"custom_system_development\": \"定制开发XX综合管理系统，主要实现XX功能\"\
+            \n}\n```\n\n请根据上述要求进行全面的采购内容分析和梳理，确保JSON格式正确，可直接解析，且仅输出最终JSON格式结果，不含中间思考过程。除非有充分理由，请不要随意修改和缩减原先输出的内容。"
+        selected: false
+        title: LLM提取采购内容
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1744808296034'
+      position:
+        x: 334
+        y: 263
+      positionAbsolute:
+        x: 334
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: 硬件采购部分
+          name: hardware_purchase
+          required: false
+          type: string
+        - description: 成品软件采购部分
+          name: software_purchase
+          required: false
+          type: string
+        - description: 定制化系统采购部分
+          name: custom_system_development
+          required: false
+          type: string
+        query:
+        - '1744808296034'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1744810851984'
+      position:
+        x: 638
+        y: 263
+      positionAbsolute:
+        x: 638
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            response_format: json_object
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 646635bc-cdec-463a-9fe4-6677ab0872ce
+          role: system
+          text: "# 采购内容分类\n\n作为资深采购专员和信创合规审核专家，根据我提供的硬件采购内容{{{#1744810851984.hardware_purchase#}}判断信创合规性\n\
+            \n## 硬件采购合规判断规则\n1.回答结果不需要假设，内容均来自我提供的数据\n\n## 输出格式和字段说明\n请使用JavaScript以JSON格式输出优化后的分析结果，包含以下字段：\n\
+            \n```json\n{\n  \"hardware_purchase\": {\n    \"is_involved\": \"硬件采购是否涉及（是/否）\"\
+            ,\n    \"content\": \"硬件采购内容（具体采购清单和技术参数）\",\n    \"is_compliant\": \"\
+            硬件采购是否符合规范（当is_involved为'是'时，返回：是/否/不确定）\",\n    \"compliance_notes\"\
+            : \"硬件采购(不)合规的具体说明\"\n  }\n}\n```\n\n## 输出示例\n\n```json\n{\n  \"hardware_purchase\"\
+            : {\n    \"is_involved\": \"是\",\n    \"content\": \"采购了服务器3台（CPU：intel\
+            \ x86架构 内存：16G 核心数量：8）、交换机等网络设备5台、安全设备硬件6台\",\n    \"is_compliant\": \"\
+            否\",\n    \"compliance_notes\": \"intel cpu不符合信创要求\"\n  }\n}\n```\n\n\
+            ```json\n{\n  \"hardware_purchase\": {\n    \"is_involved\": \"是\",\n\
+            \    \"content\": \"采购了服务器3台（CPU：海光 x86架构 内存：16G 核心数量：8）、交换机等网络设备5台、安全设备硬件6台\"\
+            ,\n    \"is_compliant\": \"是\",\n    \"compliance_notes\": \"海光符合信创要求\"\
+            \n  }\n}\n```\n\n```json\n{\n  \"hardware_purchase\": {\n    \"is_involved\"\
+            : \"是\",\n    \"content\": \"采购了服务器3台、交换机等网络设备5台、安全设备硬件6台\",\n    \"is_compliant\"\
+            : \"不确定\",\n    \"compliance_notes\": \"服务器参数不明确，无法确定是否信创合规\"\n  }\n}\n\
+            ```\n\n\n请根据上述要求进行全面的采购内容分析和梳理，确保JSON格式正确，可直接解析，且仅输出最终JSON格式结果，不含中间思考过程。除非有充分理由，请不要随意修改和缩减原先输出的内容。"
+        selected: false
+        title: LLM硬件信创合规
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1744811402034'
+      position:
+        x: 1246
+        y: 263
+      positionAbsolute:
+        x: 1246
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '='
+            id: a7ef02b2-e5ee-45b0-84f9-f5be486ca7ea
+            value: '1'
+            varType: number
+            variable_selector:
+            - '1744810851984'
+            - __is_success
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1744812806545'
+      position:
+        x: 942
+        y: 263
+      positionAbsolute:
+        x: 942
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            response_format: json_object
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 646635bc-cdec-463a-9fe4-6677ab0872ce
+          role: system
+          text: "# 采购内容分类\n\n作为资深采购专员和信创合规审核专家，根据我提供的成品软件采购内容{{#1744810851984.software_purchase#}}判断信创合规性\n\
+            \n## 成品软件采购合规判断规则\n1.回答结果不需要假设，内容均来自我提供的数据\n\n## 输出格式和字段说明\n请使用JavaScript以JSON格式输出优化后的分析结果，包含以下字段：\n\
+            \n```json\n{\n  \"software_purchase\": {\n    \"is_involved\": \"成品软件采购是否涉及（是/否）\"\
+            ,\n    \"content\": \"成品软件采购内容（具体采购清单和技术参数）\",\n    \"is_compliant\":\
+            \ \"成品软件采购是否符合规范（当is_involved为'是'时，返回：是/否/不确定）\",\n    \"compliance_notes\"\
+            : \"成品软件采购(不)合规的具体说明\"\n  }\n}\n```\n\n## 输出示例\n\n```json\n{\n  \"software_purchase\"\
+            : {\n    \"is_involved\": \"是\",\n    \"content\": \"CentOS、MySQL\",\n\
+            \    \"is_compliant\": \"否\",\n    \"compliance_notes\": \"CentOS、MySQL不符合信创要求\"\
+            \n  }\n}\n```\n\n```json\n{\n  \"software_purchase\": {\n    \"is_involved\"\
+            : \"是\",\n    \"content\": \"统信UOS、达梦DM数据库\",\n    \"is_compliant\": \"\
+            是\",\n    \"compliance_notes\": \"统信UOS、达梦DM数据库符合信创要求\"\n  }\n}\n```\n\
+            \n```json\n{\n  \"software_purchase\": {\n    \"is_involved\": \"是\",\n\
+            \    \"content\": \"服务器操作系统、数据库\",\n    \"is_compliant\": \"不确定\",\n \
+            \   \"compliance_notes\": \"未提供明确的品牌参数，无法判断信创合规\"\n  }\n}\n```\n\n\n请根据上述要求进行全面的采购内容分析和梳理，确保JSON格式正确，可直接解析，且仅输出最终JSON格式结果，不含中间思考过程。除非有充分理由，请不要随意修改和缩减原先输出的内容。"
+        selected: true
+        title: LLM成品软件信创合规
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17448138643320'
+      position:
+        x: 1246
+        y: 393
+      positionAbsolute:
+        x: 1246
+        y: 393
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            response_format: json_object
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 646635bc-cdec-463a-9fe4-6677ab0872ce
+          role: system
+          text: "# 采购内容分类\n\n作为资深采购专员和信创合规审核专家，根据我提供的定制化系统开发采购内容{{#1744810851984.custom_system_development#}}判断信创合规性\n\
+            \n## 定制化系统开发采购合规判断规则\n1.结合{{#1744810851984.software_purchase#}}内容判断定制系统开发的信创合规情况，如采购的信创操作系统、数据库成品软件则定制系统开发信创合规\n\
+            2.如定制化系统开发内容描述包含要求满足信创、国产化适配内容或复合国产、信创要求，则定制系统开发信创合规\n3.回答结果不需要假设，内容均来自我提供的数据\n\
+            \n## 输出格式和字段说明\n请使用JavaScript以JSON格式输出优化后的分析结果，包含以下字段：\n\n```json\n{\n\
+            \  \"custom_system_development\": {\n    \"is_involved\": \"定制系统开发采购是否涉及（是/否）\"\
+            ,\n    \"business\": \"定制系统开发业务\",\n    \"technology_route\": \"定制系统开发技术路线\"\
+            ,\n    \"is_compliant\": \"定制系统开发采购是否符合规范（当is_involved为'是'时，返回：是/否/不确定）\"\
+            ,\n    \"compliance_notes\": \"定制系统开发(不)合规具体说明\"\n  }\n}\n```\n\n## 输出示例\n\
+            \n```json\n{\n  \"custom_system_development\": {\n    \"is_involved\"\
+            : \"是\",\n    \"business\": \"政务办公系统开发\",\n    \"technology_route\": \"\
+            CentOS、MySQL\",\n    \"is_compliant\": \"否\",\n    \"compliance_notes\"\
+            : \"技术路线CentOS、MySQL不符合信创要求\"\n  }\n}\n```\n\n```json\n{\n  \"custom_system_development\"\
+            : {\n    \"is_involved\": \"是\",\n    \"business\": \"金融交易系统开发\",\n  \
+            \  \"technology_route\": \"统信UOS、达梦DM数据库\",\n    \"is_compliant\": \"\
+            是\",\n    \"compliance_notes\": \"技术路线统信UOS、达梦DM数据库符合信创要求\"\n  }\n}\n\
+            ```\n\n```json\n{\n  \"custom_system_development\": {\n    \"is_involved\"\
+            : \"是\",\n    \"business\": \"医疗信息系统开发\",\n    \"technology_route\": \"\
+            未描述使用的操作系统和数据库信息\",\n    \"is_compliant\": \"不确定\",\n    \"compliance_notes\"\
+            : \"未描述使用的操作系统和数据库信息，无法判断信创合规\"\n  }\n}\n```\n\n请根据上述要求进行全面的采购内容分析和梳理，确保JSON格式正确，可直接解析，且仅输出最终JSON格式结果，不含中间思考过程。除非有充分理由，请不要随意修改和缩减原先输出的内容。"
+        selected: false
+        title: LLM定制化系统开发信创合规
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17448141996220'
+      position:
+        x: 1246
+        y: 523
+      positionAbsolute:
+        x: 1246
+        y: 523
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1744892477257'
+          - result
+          variable: output
+        selected: false
+        title: 结束
+        type: end
+      height: 90
+      id: '1744892344583'
+      position:
+        x: 1854
+        y: 393
+      positionAbsolute:
+        x: 1854
+        y: 393
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(json_str1: str, json_str2: str, json_str3:\
+          \ str) -> dict:\n    # 解析JSON字符串\n    dict1 = json.loads(json_str1)\n  \
+          \  dict2 = json.loads(json_str2)\n    dict3 = json.loads(json_str3)\n  \
+          \  \n    # 合并字典\n    merged_dict = {**dict1, **dict2, **dict3}\n    \n \
+          \   # 返回合并后的JSON字符串（确保不转义非ASCII字符）\n    return {'result': json.dumps(merged_dict,\
+          \ ensure_ascii=False)}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 判断结果合并
+        type: code
+        variables:
+        - value_selector:
+          - '1744811402034'
+          - text
+          variable: json_str1
+        - value_selector:
+          - '17448138643320'
+          - text
+          variable: json_str2
+        - value_selector:
+          - '17448141996220'
+          - text
+          variable: json_str3
+      height: 54
+      id: '1744892477257'
+      position:
+        x: 1550
+        y: 393
+      positionAbsolute:
+        x: 1550
+        y: 393
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.7

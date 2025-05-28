@@ -51,7 +51,12 @@ resources:
 
   # Dify DSL
   dify_dsl:
-    - name: "智能客服助手（示例）"
-      description: "基于Dify的智能客服对话流程"
-      file: "dify_dsl/customer_service.json"
-      tags: ["客服", "对话"]
+    - name: "信创合规检查（文字发送版）"
+      description: "基于Dify的信创合规检查对话流程，支持文字输入"
+      file: "dify_dsl/信创合规检查（文字发送版）.yml"
+      tags: ["信创", "合规", "对话"]
+
+    - name: "信创合规检查（文件上传版）"
+      description: "基于Dify的信创合规检查对话流程，支持文件上传"
+      file: "dify_dsl/信创合规检查（文件上传版）.yml"
+      tags: ["信创", "合规", "文件处理"]

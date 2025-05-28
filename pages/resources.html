@@ -363,6 +363,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/yaml.min.js"></script>
     <script src="../assets/js/components.js"></script>
     <script>
         // 加载资源内容
@@ -459,16 +460,33 @@
                 const content = document.createElement('pre');
                 const code = document.createElement('code');
                 
-                // 如果是 Dify DSL，进行 JSON 格式化和高亮
+                // 如果是 Dify DSL，进行 JSON/YAML 格式化和高亮
                 if (resource.file && resource.file.includes('dify_dsl')) {
                     try {
-                        const jsonContent = JSON.parse(resource.content);
-                        const formattedJson = JSON.stringify(jsonContent, null, 2);
-                        code.textContent = formattedJson;
-                        code.className = 'language-json';
+                        let formattedContent;
+                        let language;
+                        
+                        if (resource.file.endsWith('.yml') || resource.file.endsWith('.yaml')) {
+                            // YAML 文件处理
+                            const yamlContent = jsyaml.load(resource.content);
+                            formattedContent = jsyaml.dump(yamlContent, {
+                                indent: 2,
+                                lineWidth: -1,
+                                noRefs: true
+                            });
+                            language = 'yaml';
+                        } else {
+                            // JSON 文件处理
+                            const jsonContent = JSON.parse(resource.content);
+                            formattedContent = JSON.stringify(jsonContent, null, 2);
+                            language = 'json';
+                        }
+                        
+                        code.textContent = formattedContent;
+                        code.className = `language-${language}`;
                         hljs.highlightElement(code);
                     } catch (e) {
-                        console.error('Error formatting JSON:', e);
+                        console.error('Error formatting content:', e);
                         code.textContent = resource.content;
                     }
                 } else {
@@ -493,8 +511,27 @@
                     const previewCode = document.createElement('code');
                     
                     if (resource.file && resource.file.includes('dify_dsl')) {
-                        previewCode.className = 'language-json';
-                        previewCode.textContent = code.textContent;
+                        let formattedContent;
+                        let language;
+                        
+                        if (resource.file.endsWith('.yml') || resource.file.endsWith('.yaml')) {
+                            // YAML 文件处理
+                            const yamlContent = jsyaml.load(resource.content);
+                            formattedContent = jsyaml.dump(yamlContent, {
+                                indent: 2,
+                                lineWidth: -1,
+                                noRefs: true
+                            });
+                            language = 'yaml';
+                        } else {
+                            // JSON 文件处理
+                            const jsonContent = JSON.parse(resource.content);
+                            formattedContent = JSON.stringify(jsonContent, null, 2);
+                            language = 'json';
+                        }
+                        
+                        previewCode.className = `language-${language}`;
+                        previewCode.textContent = formattedContent;
                         hljs.highlightElement(previewCode);
                     } else {
                         previewCode.textContent = resource.content;
