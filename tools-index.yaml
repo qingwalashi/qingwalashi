@@ -49,3 +49,9 @@ tools:
     type: "link"
     url: "https://mermaid.live/edit" 
 
+  - title: "订阅到期管理"
+    description: "一站式订阅到期管理工具，支持域名、证书、工作安排等各类事项的自动化提醒。通过简单配置，轻松管理所有重要时间节点，让您不再错过任何关键日期。"
+    type: "link"
+    url: "https://schedule.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/ScheduleAutomation"
+
