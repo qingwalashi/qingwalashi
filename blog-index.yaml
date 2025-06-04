@@ -3,6 +3,13 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
+  - title: "Cursor 免费助手 —— Cursor Free Everyday"
+    date: "2025-06-04"
+    description: "一个可以每日续杯的 Cursor 工具，提供 Windows 和 Mac 的跨平台方案"
+    tags: ["Cursor"]
+    type: "md"
+    path: "blog/posts/cursor-free-assistant.md"
+
   - title: "AI 流程平台对比——Dify、Fastgpt、Ragflow #转发"
     date: "2024-05-23"
     description: "本文对比了AI流程平台Dify、FastGPT和Ragflow的核心功能，涵盖团队管理、模型支持、工具扩展、知识库和应用编排等维度。Dify在应用管理和工作流设计上表现突出，支持灵活扩展；Ragflow主打知识库增强，擅长知识图谱和检索优化；FastGPT在模型兼容性和基础功能上较为均衡。测评基于最新版本展开，为不同业务场景提供选型参考，强调工具适配性优先于单一功能强弱。"
