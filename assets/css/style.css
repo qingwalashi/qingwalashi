@@ -47,7 +47,7 @@ body {
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: var(--nav-shadow);
+    border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
     transform: translateY(0);
     height: 4rem;
@@ -134,18 +134,16 @@ body {
 .article-card {
     padding: 1.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     background: var(--bg-color);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    box-shadow: var(--card-shadow);
 }
 
 .article-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--card-shadow-hover);
     border-color: var(--primary-color);
 }
 
@@ -301,7 +299,13 @@ body {
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.page-title i {
+    color: var(--primary-color);
 }
 
 .tags-container {
@@ -320,7 +324,7 @@ body {
 
 .tag-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .tag-name {
@@ -364,10 +368,9 @@ body {
 .tool-card {
     padding: 1.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     transition: all 0.3s ease;
     background: var(--bg-color);
-    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     min-height: 200px;
@@ -376,7 +379,6 @@ body {
 
 .tool-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--card-shadow-hover);
     border-color: var(--primary-color);
 }
 
@@ -464,7 +466,6 @@ body {
 .search-box:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .search-icon {
@@ -507,6 +508,14 @@ body {
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: 2rem;
+}
+
+.articles-sidebar {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: fit-content;
 }
 
 @media (max-width: 1024px) {
@@ -625,9 +634,8 @@ body {
 .resource-section {
     background: var(--bg-color);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: var(--card-shadow);
 }
 
 .resource-section h2 {
@@ -636,6 +644,10 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.resource-section h2 i {
+    color: var(--primary-color);
 }
 
 .resource-grid {
@@ -658,7 +670,6 @@ body {
 
 .resource-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--card-shadow-hover);
     border-color: var(--primary-color);
 }
 
@@ -868,7 +879,7 @@ body {
 
 .modal-content {
     background: var(--bg-color);
-    border-radius: 12px;
+    border-radius: 8px;
     width: 90%;
     max-width: 800px;
     max-height: 90vh;
@@ -878,6 +889,7 @@ body {
     flex-direction: column;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .modal.show .modal-content {
@@ -937,6 +949,7 @@ body {
     white-space: pre-wrap;
     word-wrap: break-word;
     word-break: break-word;
+    border: 1px solid var(--border-color);
 }
 
 .modal-body code {
@@ -964,7 +977,6 @@ body {
 }
 
 .modal-button:hover {
-    background: var(--hover-color);
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
