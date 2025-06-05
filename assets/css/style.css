@@ -40,21 +40,26 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
     transform: translateY(0);
-    height: 4rem;
 }
 
 .navbar.hidden {
     transform: translateY(-100%);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
 }
 
 .nav-brand {
@@ -118,11 +123,9 @@ body {
 
 /* 主要内容区样式 */
 .main-content {
-    margin-top: 5rem;
     padding: 2rem 0;
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 6rem auto 0;
 }
 
 /* 文章列表样式 */
@@ -535,30 +538,64 @@ body {
         padding: 0 1rem;
     }
 
-    .navbar {
+    .nav-container {
         padding: 0.75rem 1rem;
         height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+        position: relative;
+    }
+
+    .navbar {
+        height: auto;
     }
 
     .nav-brand {
         font-size: 1.25rem;
-        width: 100%;
-        padding: 0.25rem 0;
+        white-space: nowrap;
+        max-width: 80%; /* 确保品牌名称不会占据太多空间 */
     }
 
+    /* 移动端默认隐藏导航链接 */
     .nav-links {
-        width: 100%;
-        gap: 0.5rem;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        position: fixed;
+        top: 4.5rem;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
+        border-bottom: 1px solid var(--border-color);
+        transform: translateY(-150%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 999;
+        height: 0;
+        overflow: hidden;
+        box-shadow: var(--nav-shadow);
+        visibility: hidden;
+        display: none; /* 默认不显示 */
+    }
+
+    /* 点击汉堡菜单按钮后显示导航链接 */
+    .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        height: auto;
+        padding: 1rem;
+        visibility: visible;
+        display: flex;
+        max-height: calc(100vh - 4.5rem);
+        overflow-y: auto;
     }
 
     .nav-links a {
-        padding: 0.5rem;
-        font-size: 0.875rem;
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        white-space: normal;
     }
 
     .nav-links a i {
@@ -570,7 +607,7 @@ body {
     }
 
     .main-content {
-        margin-top: 6rem;
+        margin-top: 4.5rem;
         padding: 1rem 0;
     }
 
@@ -622,6 +659,14 @@ body {
 
     .articles-container {
         gap: 1rem;
+    }
+
+    .category-title {
+        font-size: 1.3rem;
+    }
+
+    .mobile-menu-toggle:active {
+        transform: translateY(-50%) scale(0.95);
     }
 }
 
@@ -1240,5 +1285,39 @@ body {
     
     .category-title {
         font-size: 1.3rem;
+    }
+}
+
+/* 汉堡菜单按钮 */
+.mobile-menu-toggle {
+    display: none; /* PC端默认隐藏 */
+    background: var(--hover-color);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle:hover {
+    background-color: var(--hover-color);
+    border-color: var(--primary-color);
+}
+
+/* 确保在移动端显示汉堡菜单按钮 */
+@media screen and (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex !important;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
 } 

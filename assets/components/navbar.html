@@ -1,33 +1,51 @@
 <!-- 导航栏组件 -->
 <nav class="navbar">
-    <div class="nav-brand">
-        <i class="fas fa-feather-alt"></i>
-        QLWS｜调温而行
+    <div class="nav-container">
+        <div class="nav-brand">
+            <i class="fas fa-feather-alt"></i>
+            QLWS｜调温而行
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="/" class="nav-link">
+                <i class="fas fa-home"></i>
+                首页
+            </a>
+            <a href="/pages/tags.html" class="nav-link">
+                <i class="fas fa-tags"></i>
+                标签
+            </a>
+            <a href="/pages/tools.html" class="nav-link">
+                <i class="fas fa-tools"></i>
+                工具
+            </a>
+            <a href="/pages/favorites.html" class="nav-link">
+                <i class="fas fa-bookmark"></i>
+                收藏
+            </a>
+            <a href="/pages/resources.html" class="nav-link">
+                <i class="fas fa-book"></i>
+                资源
+            </a>
+            <a href="/rss.xml" class="nav-link rss-link">
+                <i class="fas fa-rss"></i>
+                RSS
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="菜单" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
-    <div class="nav-links">
-        <a href="/" class="nav-link">
-            <i class="fas fa-home"></i>
-            首页
-        </a>
-        <a href="/pages/tags.html" class="nav-link">
-            <i class="fas fa-tags"></i>
-            标签
-        </a>
-        <a href="/pages/tools.html" class="nav-link">
-            <i class="fas fa-tools"></i>
-            工具
-        </a>
-        <a href="/pages/favorites.html" class="nav-link">
-            <i class="fas fa-bookmark"></i>
-            收藏
-        </a>
-        <a href="/pages/resources.html" class="nav-link">
-            <i class="fas fa-book"></i>
-            资源
-        </a>
-        <a href="/rss.xml" class="nav-link rss-link">
-            <i class="fas fa-rss"></i>
-            RSS
-        </a>
-    </div>
-</nav> 
+</nav>
+
+<!-- 确保移动端汉堡菜单按钮显示 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 检查是否为移动设备
+    if (window.innerWidth <= 768) {
+        var menuButton = document.getElementById('mobile-menu-toggle');
+        if (menuButton) {
+            menuButton.style.display = 'flex';
+        }
+    }
+});
+</script> 
