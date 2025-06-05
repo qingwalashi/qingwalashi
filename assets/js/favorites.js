@@ -1,7 +1,7 @@
 // 加载收藏数据
 async function loadFavorites() {
     try {
-        const response = await fetch('../favorites.yaml');
+        const response = await fetch('../config/favorites.yaml');
         const text = await response.text();
         const data = jsyaml.load(text);
         const favoritesData = data.favorites || {};

@@ -56,7 +56,7 @@
         // 加载资源内容
         async function loadResources() {
             try {
-                const response = await fetch('../resources-index.yaml');
+                const response = await fetch('../config/resources-index.yaml');
                 const text = await response.text();
                 const data = jsyaml.load(text);
                 

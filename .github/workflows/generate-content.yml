@@ -23,10 +23,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: Generate MD Pages
-      run: python generate_md_pages.py
+      run: python scripts/generate_md_pages.py
     
     - name: Generate RSS
-      run: python generate_rss.py
+      run: python scripts/generate_rss.py
     
     - name: Commit and push if changed
       run: |

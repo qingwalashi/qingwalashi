@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 import yaml
 import datetime
+import os
 from pathlib import Path
 
 def generate_rss():
+    # 获取项目根目录的路径
+    root_dir = Path(__file__).parent.parent
+    
     # 读取YAML文件
-    with open('blog-index.yaml', 'r', encoding='utf-8') as f:
+    with open(root_dir / 'config' / 'blog-index.yaml', 'r', encoding='utf-8') as f:
         data = yaml.safe_load(f)
     
     # 获取文章列表并按日期排序
@@ -50,7 +54,7 @@ def generate_rss():
 </rss>'''
     
     # 保存RSS文件
-    with open('rss.xml', 'w', encoding='utf-8') as f:
+    with open(root_dir / 'rss.xml', 'w', encoding='utf-8') as f:
         f.write(rss_content)
     
     print('RSS file generated successfully!')
