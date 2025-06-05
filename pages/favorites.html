@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收藏 - QLWS｜调温而行</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏容器 -->
+        <div id="navbar-container"></div>
+
+        <!-- 主要内容区 -->
+        <main class="main-content">
+            <h1 class="page-title"><i class="fas fa-bookmark"></i> 收藏</h1>
+            
+            <div class="favorites-container">
+                <!-- 左侧分类导航 -->
+                <div class="categories-nav">
+                    <h3><i class="fas fa-list"></i> 分类导航</h3>
+                    <ul class="category-list" id="category-list">
+                        <!-- 分类列表将通过 JavaScript 动态加载 -->
+                    </ul>
+                </div>
+                
+                <!-- 右侧收藏内容 -->
+                <div class="favorites-content" id="favorites-content">
+                    <!-- 收藏内容将通过 JavaScript 动态加载 -->
+                </div>
+            </div>
+        </main>
+
+        <!-- 页脚容器 -->
+        <div id="footer-container"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/favorites.js"></script>
+</body>
+</html> 

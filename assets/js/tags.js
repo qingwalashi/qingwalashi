@@ -1,7 +1,7 @@
 // 加载文章数据并处理标签
 async function loadTags() {
     try {
-        const response = await fetch('./blog-index.yaml');
+        const response = await fetch('../blog-index.yaml');
         const text = await response.text();
         const articles = jsyaml.load(text).articles;
         
@@ -45,9 +45,12 @@ async function loadTags() {
                                     break;
                             }
 
+                            // 修正文章链接路径
+                            const articlePath = article.type === 'link' ? article.url : `../${path}`;
+
                             return `
                             <div class="tag-article">
-                                <a href="${article.type === 'link' ? article.url : path}">
+                                <a href="${articlePath}">
                                     ${typeEmoji} ${article.title}
                                 </a>
                             </div>
