@@ -19,15 +19,34 @@ async function loadFavorites() {
             return;
         }
         
+        // 为不同分类选择不同的图标
+        const categoryIcons = {
+            '工具': 'fa-tools',
+            '影视': 'fa-film',
+            '动漫': 'fa-tv',
+            '技术': 'fa-code',
+            '学习': 'fa-graduation-cap',
+            '音乐': 'fa-music',
+            '游戏': 'fa-gamepad',
+            '购物': 'fa-shopping-cart',
+            '社交': 'fa-users'
+        };
+        
         // 生成分类导航
         const categoryList = document.getElementById('category-list');
         categoryList.innerHTML = categories.map((category, index) => {
+            // 使用特定图标，如果没有则使用默认文件夹图标
+            const icon = categoryIcons[category] || 'fa-folder';
+            
             return `
                 <li class="category-item ${index === 0 ? 'active' : ''}" data-category="${category}">
-                    <i class="fas fa-folder"></i> ${category}
+                    <i class="fas ${icon}"></i> ${category}
                 </li>
             `;
         }).join('');
+        
+        // 检测是否为移动端
+        const isMobile = window.innerWidth <= 768;
         
         // 生成收藏内容
         const favoritesContent = document.getElementById('favorites-content');
@@ -35,36 +54,7 @@ async function loadFavorites() {
             const categoryFavorites = favoritesData[category] || [];
             
             // 为不同分类选择不同的图标
-            let categoryIcon = 'fa-folder-open';
-            switch(category) {
-                case '工具':
-                    categoryIcon = 'fa-tools';
-                    break;
-                case '影视':
-                    categoryIcon = 'fa-film';
-                    break;
-                case '动漫':
-                    categoryIcon = 'fa-tv';
-                    break;
-                case '技术':
-                    categoryIcon = 'fa-code';
-                    break;
-                case '学习':
-                    categoryIcon = 'fa-graduation-cap';
-                    break;
-                case '音乐':
-                    categoryIcon = 'fa-music';
-                    break;
-                case '游戏':
-                    categoryIcon = 'fa-gamepad';
-                    break;
-                case '购物':
-                    categoryIcon = 'fa-shopping-cart';
-                    break;
-                case '社交':
-                    categoryIcon = 'fa-users';
-                    break;
-            }
+            const categoryIcon = categoryIcons[category] || 'fa-folder-open';
             
             return `
                 <div class="category-section" id="category-${category}" style="display: ${index === 0 ? 'block' : 'none'}">
@@ -138,6 +128,11 @@ async function loadFavorites() {
                 const categorySection = document.getElementById(`category-${category}`);
                 if (categorySection) {
                     categorySection.style.display = 'block';
+                    
+                    // 在移动端，点击分类后滚动到内容区域
+                    if (window.innerWidth <= 768) {
+                        categorySection.scrollIntoView({behavior: 'smooth'});
+                    }
                 }
                 
                 // 移除所有活动状态
@@ -148,6 +143,17 @@ async function loadFavorites() {
                 // 添加当前活动状态
                 this.classList.add('active');
             });
+        });
+        
+        // 添加窗口大小变化监听
+        window.addEventListener('resize', function() {
+            const isMobile = window.innerWidth <= 768;
+            const categoryNav = document.querySelector('.categories-nav');
+            
+            if (isMobile) {
+                // 确保在移动端时导航高度合适
+                categoryNav.style.maxHeight = 'none';
+            }
         });
         
     } catch (error) {
