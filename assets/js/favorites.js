@@ -18,11 +18,31 @@ async function loadFavorites() {
         const data = jsyaml.load(text);
         const favoritesData = data.favorites || {};
         
+        // 处理置顶内容
+        const pinnedItems = [];
+        const normalItems = {};
+        
+        // 遍历所有分类
+        Object.entries(favoritesData).forEach(([category, items]) => {
+            // 收集所有置顶内容到一个数组中
+            const pinned = items.filter(item => item.pinned);
+            pinnedItems.push(...pinned);
+            
+            // 保存原始分类内容
+            normalItems[category] = items;
+        });
+        
+        // 合并置顶和普通内容
+        const processedData = {
+            '置顶': pinnedItems,
+            ...normalItems
+        };
+        
         // 保存到全局变量
-        allFavoritesData = favoritesData;
+        allFavoritesData = processedData;
         
         // 获取所有分类
-        const categories = Object.keys(favoritesData);
+        const categories = Object.keys(processedData);
         
         if (categories.length === 0) {
             document.getElementById('favorites-content').innerHTML = `
@@ -36,6 +56,7 @@ async function loadFavorites() {
         
         // 为不同分类选择不同的图标
         const categoryIcons = {
+            '置顶': 'fa-thumbtack',
             '工具': 'fa-tools',
             '影视': 'fa-film',
             '动漫': 'fa-tv',
@@ -44,7 +65,13 @@ async function loadFavorites() {
             '音乐': 'fa-music',
             '游戏': 'fa-gamepad',
             '购物': 'fa-shopping-cart',
-            '社交': 'fa-users'
+            '社交': 'fa-users',
+            'AI': 'fa-robot',
+            '技术站点': 'fa-laptop-code',
+            '产品与设计': 'fa-palette',
+            '视频流媒体': 'fa-video',
+            '开发工具': 'fa-code-branch',
+            '视频下载': 'fa-download'
         };
         
         // 生成分类导航
@@ -64,7 +91,7 @@ async function loadFavorites() {
         const isMobile = window.innerWidth <= 768;
         
         // 渲染收藏内容
-        renderFavorites(favoritesData, categories);
+        renderFavorites(processedData, categories);
         
         // 添加分类导航点击事件
         document.querySelectorAll('.category-item').forEach(item => {
@@ -126,6 +153,7 @@ async function loadFavorites() {
 // 渲染收藏内容
 function renderFavorites(favoritesData, categories) {
     const categoryIcons = {
+        '置顶': 'fa-thumbtack',
         '工具': 'fa-tools',
         '影视': 'fa-film',
         '动漫': 'fa-tv',
@@ -134,7 +162,13 @@ function renderFavorites(favoritesData, categories) {
         '音乐': 'fa-music',
         '游戏': 'fa-gamepad',
         '购物': 'fa-shopping-cart',
-        '社交': 'fa-users'
+        '社交': 'fa-users',
+        'AI': 'fa-robot',
+        '技术站点': 'fa-laptop-code',
+        '产品与设计': 'fa-palette',
+        '视频流媒体': 'fa-video',
+        '开发工具': 'fa-code-branch',
+        '视频下载': 'fa-download'
     };
     
     // 生成收藏内容
@@ -145,62 +179,78 @@ function renderFavorites(favoritesData, categories) {
         // 为不同分类选择不同的图标
         const categoryIcon = categoryIcons[category] || 'fa-folder-open';
         
+        // 如果是置顶分类，直接显示所有置顶内容
+        if (category === '置顶') {
+            return `
+                <div class="category-section" id="category-${category}" style="display: ${index === 0 ? 'block' : 'none'}">
+                    <h2 class="category-title"><i class="fas ${categoryIcon}"></i> ${category}</h2>
+                    <div class="favorite-cards">
+                        ${categoryFavorites.map(favorite => renderFavoriteCard(favorite, category, false)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
         return `
             <div class="category-section" id="category-${category}" style="display: ${index === 0 ? 'block' : 'none'}">
                 <h2 class="category-title"><i class="fas ${categoryIcon}"></i> ${category}</h2>
                 <div class="favorite-cards">
-                    ${categoryFavorites.map(favorite => {
-                        // 确定链接图标
-                        const linkIcon = favorite.type === 'app' ? 'fa-mobile-alt' : 'fa-arrow-right';
-                        
-                        // 根据分类确定链接文本
-                        let linkText = '访问链接';
-                        switch(category) {
-                            case '工具':
-                                linkText = '使用工具';
-                                break;
-                            case '影视':
-                                linkText = '观看影视';
-                                break;
-                            case '动漫':
-                                linkText = '观看动漫';
-                                break;
-                            case '技术':
-                                linkText = '学习技术';
-                                break;
-                            case '学习':
-                                linkText = '开始学习';
-                                break;
-                            case '音乐':
-                                linkText = '聆听音乐';
-                                break;
-                            case '游戏':
-                                linkText = '开始游戏';
-                                break;
-                            case '购物':
-                                linkText = '去购物';
-                                break;
-                            case '社交':
-                                linkText = '社交互动';
-                                break;
-                        }
-                        
-                        return `
-                            <div class="favorite-card" data-title="${favorite.title}" data-description="${favorite.description}">
-                                <div>
-                                    <h3 class="favorite-title">${favorite.title}</h3>
-                                    <p class="favorite-description">${favorite.description}</p>
-                                </div>
-                                <a href="${favorite.url}" class="favorite-link" target="_blank" rel="noopener noreferrer">
-                                    ${linkText} <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        `;
-                    }).join('')}
+                    ${categoryFavorites.map(favorite => renderFavoriteCard(favorite, category, true)).join('')}
                 </div>
             </div>
         `;
     }).join('');
+}
+
+// 渲染单个收藏卡片
+function renderFavoriteCard(favorite, category, showPinnedBadge = true) {
+    // 确定链接图标
+    const linkIcon = favorite.type === 'app' ? 'fa-mobile-alt' : 'fa-arrow-right';
+    
+    // 根据分类确定链接文本
+    let linkText = '访问链接';
+    switch(category) {
+        case '工具':
+            linkText = '使用工具';
+            break;
+        case '影视':
+            linkText = '观看影视';
+            break;
+        case '动漫':
+            linkText = '观看动漫';
+            break;
+        case '技术':
+            linkText = '学习技术';
+            break;
+        case '学习':
+            linkText = '开始学习';
+            break;
+        case '音乐':
+            linkText = '聆听音乐';
+            break;
+        case '游戏':
+            linkText = '开始游戏';
+            break;
+        case '购物':
+            linkText = '去购物';
+            break;
+        case '社交':
+            linkText = '社交互动';
+            break;
+    }
+    
+    return `
+        <div class="favorite-card ${favorite.pinned ? 'pinned' : ''}" data-title="${favorite.title}" data-description="${favorite.description}">
+            ${showPinnedBadge && favorite.pinned ? '<div class="pinned-badge"><i class="fas fa-thumbtack"></i></div>' : ''}
+            <div>
+                <h3 class="favorite-title">${favorite.title}</h3>
+                <p class="favorite-description">${favorite.description}</p>
+            </div>
+            <a href="${favorite.url}" class="favorite-link" target="_blank" rel="noopener noreferrer">
+                ${linkText} <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    `;
 }
 
 // 初始化搜索功能
