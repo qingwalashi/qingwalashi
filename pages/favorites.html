@@ -17,6 +17,25 @@
         <main class="main-content">
             <h1 class="page-title"><i class="fas fa-bookmark"></i> 收藏</h1>
             
+            <!-- 搜索框 -->
+            <div class="favorites-search">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="favorites-search-input" class="search-box" placeholder="搜索收藏...">
+                    <div class="search-engines">
+                        <button id="baidu-search-btn" class="search-engine-btn active" title="百度搜索" data-engine="baidu">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button id="bing-search-btn" class="search-engine-btn" title="必应搜索" data-engine="bing">
+                            <i class="fab fa-microsoft"></i>
+                        </button>
+                        <button id="google-search-btn" class="search-engine-btn" title="谷歌搜索" data-engine="google">
+                            <i class="fab fa-google"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <div class="favorites-container">
                 <!-- 分类导航 -->
                 <div class="categories-nav">
