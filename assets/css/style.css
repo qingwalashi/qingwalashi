@@ -670,6 +670,59 @@ body {
     .mobile-menu-toggle:active {
         transform: translateY(-50%) scale(0.95);
     }
+
+    .category-list {
+        display: flex;
+        flex-direction: column;
+        overflow-x: visible;
+        padding-bottom: 8px;
+        gap: 8px;
+    }
+    .category-group {
+        width: 100%;
+    }
+    .subcategory-list {
+        width: 100%;
+    }
+    .category-item {
+        margin: 0;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        background-color: #fff;
+        border-radius: 8px;
+        margin-bottom: 6px;
+    }
+    /* 只为一级分类保留卡片样式，子分类无边框、无背景、无圆角 */
+    .category-item[data-level]:not([data-level="0"]):not([data-level="1"]) {
+        border: none;
+        background: none;
+        border-radius: 0;
+        margin-bottom: 2px;
+        padding-left: 0;
+    }
+    /* 新增：为不同层级的分类增加缩进 */
+    .category-group {
+        margin-left: 0;
+    }
+    .category-group[data-level="1"] {
+        margin-left: 16px;
+    }
+    .category-group[data-level="2"] {
+        margin-left: 32px;
+    }
+    .category-group[data-level="3"] {
+        margin-left: 48px;
+    }
+    .category-group[data-level="4"] {
+        margin-left: 64px;
+    }
+    /* 让子分类的间距更明显 */
+    .subcategory-list {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
 }
 
 /* 资源页面样式 */
@@ -1184,6 +1237,11 @@ body {
     margin: 0;
 }
 
+.category-group {
+    margin: 0;
+    padding: 0;
+}
+
 .category-item {
     padding: 8px 10px;
     margin: 5px 0;
@@ -1213,6 +1271,22 @@ body {
     width: 16px;
     text-align: center;
     color: var(--primary-color);
+}
+
+.toggle-icon {
+    width: 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    transition: transform 0.2s ease;
+}
+
+.toggle-icon i {
+    font-size: 0.8rem;
+}
+
+.subcategory-list {
+    margin-left: 0;
+    padding-left: 0;
 }
 
 .favorites-content {
@@ -1427,35 +1501,27 @@ body {
     
     .category-list {
         display: flex;
-        overflow-x: auto;
+        flex-direction: column;
+        overflow-x: visible;
         padding-bottom: 8px;
         gap: 8px;
-        flex-wrap: nowrap;
-        -webkit-overflow-scrolling: touch;
     }
     
     .category-item {
         margin: 0;
         font-size: 0.9rem;
         white-space: nowrap;
-        flex-shrink: 0;
         padding: 8px 12px;
         border: 1px solid var(--border-color);
         background-color: #fff;
     }
     
-    .category-item.active {
-        background-color: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
+    .category-group {
+        width: 100%;
     }
     
-    .category-item.active i {
-        color: white;
-    }
-    
-    .favorite-cards {
-        grid-template-columns: 1fr;
+    .subcategory-list {
+        width: 100%;
     }
     
     .category-title {

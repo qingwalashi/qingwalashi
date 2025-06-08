@@ -27,27 +27,7 @@ tools:
     description: "转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。"
     type: "link"
     url: "https://nbygcg.qingwalashi.cn/"
-    repo: "https://github.com/qingwalashi/nbygcg"  
-
-  - title: "MinerU"
-    description: "MinerU 免费全能的文档解析神器"
-    type: "link"
-    url: "https://mineru.net/"
-  
-  - title: "Dify 工作室"
-    description: "Dify 云平台，提供 AI 应用开发、部署和管理的一站式解决方案。"
-    type: "link"
-    url: "https://cloud.dify.ai/apps"
-  
-  - title: "Project Graph 在线绘图"
-    description: "快速绘制节点图的桌面工具，可以用于项目进程拓扑图绘制、快速头脑风暴草稿。"
-    type: "link"
-    url: "https://web.project-graph.top/" 
-  
-  - title: "Mermaid 在线编辑器"
-    description: "基于 JavaScript 的图表工具，可渲染 Markdown 启发的文本定义以动态创建和修改图表。"
-    type: "link"
-    url: "https://mermaid.live/edit" 
+    repo: "https://github.com/qingwalashi/nbygcg"   
 
   - title: "订阅到期管理"
     description: "一站式订阅到期管理工具，支持域名、证书、工作安排等各类事项的自动化提醒。通过简单配置，轻松管理所有重要时间节点，让您不再错过任何关键日期。"
