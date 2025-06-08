@@ -5,7 +5,7 @@
         <link>https://blog.qingwalashi.cn</link>
         <description>分享技术、工具和创意的个人博客</description>
         <language>zh-CN</language>
-        <lastBuildDate>Sun, 08 Jun 2025 14:23:40 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Jun 2025 14:30:47 GMT</lastBuildDate>
         <atom:link href="https://blog.qingwalashi.cn/rss.xml" rel="self" type="application/rss+xml" />
 
         <item>
@@ -21,20 +21,6 @@
             <description><![CDATA[本文对比了AI流程平台Dify、FastGPT和Ragflow的核心功能，涵盖团队管理、模型支持、工具扩展、知识库和应用编排等维度。Dify在应用管理和工作流设计上表现突出，支持灵活扩展；Ragflow主打知识库增强，擅长知识图谱和检索优化；FastGPT在模型兼容性和基础功能上较为均衡。测评基于最新版本展开，为不同业务场景提供选型参考，强调工具适配性优先于单一功能强弱。]]></description>
             <pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
             <guid>https://blog.qingwalashi.cnhttps://zerozzz.win/ai-%E6%B5%81%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94dify%E3%80%81fastgpt%E3%80%81ragflow</guid>
-        </item>
-        <item>
-            <title><![CDATA[硅基流动模型资源库]]></title>
-            <link>https://blog.qingwalashi.cnhttps://cloud.siliconflow.cn/models</link>
-            <description><![CDATA[硅基流动模型资源库]]></description>
-            <pubDate>Mon, 20 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://cloud.siliconflow.cn/models</guid>
-        </item>
-        <item>
-            <title><![CDATA[DeepSeek 开放平台]]></title>
-            <link>https://blog.qingwalashi.cnhttps://platform.deepseek.com/usage</link>
-            <description><![CDATA[DeepSeek 开放平台]]></description>
-            <pubDate>Mon, 20 May 2024 00:00:00 GMT</pubDate>
-            <guid>https://blog.qingwalashi.cnhttps://platform.deepseek.com/usage</guid>
         </item>
         <item>
             <title><![CDATA[🏥 3D医院设计——45°俯视超治愈！Blender渲染极简医疗空间✨]]></title>
