@@ -723,6 +723,15 @@ body {
         margin-top: 2px;
         margin-bottom: 2px;
     }
+    /* 在移动端，二级及以下分类选中时不显示背景色和边框，仅字体高亮 */
+    .category-item[data-level]:not([data-level="1"]).active {
+        background: none !important;
+        border: none !important;
+        color: var(--primary-color) !important;
+    }
+    .category-item[data-level]:not([data-level="1"]).active i {
+        color: var(--primary-color) !important;
+    }
 }
 
 /* 资源页面样式 */
