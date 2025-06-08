@@ -17,20 +17,6 @@ articles:
     type: "link"
     url: "https://zerozzz.win/ai-%E6%B5%81%E7%A8%8B%E5%B9%B3%E5%8F%B0%E5%AF%B9%E6%AF%94dify%E3%80%81fastgpt%E3%80%81ragflow" 
 
-  - title: "硅基流动模型资源库"
-    date: "2024-05-20"
-    description: "硅基流动模型资源库"
-    tags: ["MaaS Platform"]
-    type: "link"
-    url: "https://cloud.siliconflow.cn/models" 
-
-  - title: "DeepSeek 开放平台"
-    date: "2024-05-20"
-    description: "DeepSeek 开放平台"
-    tags: ["MaaS Platform"]
-    type: "link"
-    url: "https://platform.deepseek.com/usage" 
-
   - title: "🏥 3D医院设计——45°俯视超治愈！Blender渲染极简医疗空间✨"
     date: "2024-04-09"
     description: "使用AIGC生成3D医院设计，生成Blender渲染风格的图片"

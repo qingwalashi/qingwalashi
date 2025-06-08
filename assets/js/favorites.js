@@ -86,32 +86,40 @@ async function loadFavorites() {
                 
                 // 获取当前选中的分类
                 const category = this.getAttribute('data-category');
-                
-                // 如果是父分类，自动展开子分类
-                const parent = this.closest('.category-group');
-                if (parent) {
-                    const subList = parent.querySelector('.subcategory-list');
-                    const icon = parent.querySelector('.toggle-icon i');
-                    if (subList && subList.style.display === 'none') {
-                        subList.style.display = 'block';
-                        icon.classList.remove('fa-chevron-right');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                }
+                const level = parseInt(this.getAttribute('data-level'));
                 
                 // 隐藏所有分类内容
                 document.querySelectorAll('.category-section').forEach(section => {
                     section.style.display = 'none';
                 });
                 
-                // 显示选中的分类内容
-                const categorySection = document.getElementById(`category-${category}`);
-                if (categorySection) {
-                    categorySection.style.display = 'block';
-                    
-                    // 在移动端，点击分类后滚动到内容区域
-                    if (window.innerWidth <= 768) {
-                        categorySection.scrollIntoView({behavior: 'smooth'});
+                // 一级分类点击时，合并展示所有子分类内容
+                if (level === 1) {
+                    // 获取所有子分类及本分类的分类名
+                    const prefix = category + '/';
+                    const relatedCategories = Object.keys(allFavoritesData).filter(cat => cat === category || cat.startsWith(prefix));
+                    // 渲染这些分类（每个分类一个区块）
+                    const favoritesContent = document.getElementById('favorites-content');
+                    favoritesContent.innerHTML = relatedCategories.map((cat, idx) => {
+                        const categoryFavorites = allFavoritesData[cat] || [];
+                        const categoryIcon = getCategoryIcon(cat, cat === category ? 1 : 2);
+                        return `
+                            <div class="category-section" id="category-${cat}" style="display: block">
+                                <h2 class="category-title"><i class="fas ${categoryIcon}"></i> ${cat}</h2>
+                                <div class="favorite-cards">
+                                    ${categoryFavorites.map(favorite => renderFavoriteCard(favorite, cat, true)).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    // 显示选中的分类内容
+                    const categorySection = document.getElementById(`category-${category}`);
+                    if (categorySection) {
+                        categorySection.style.display = 'block';
+                        if (window.innerWidth <= 768) {
+                            categorySection.scrollIntoView({behavior: 'smooth'});
+                        }
                     }
                 }
                 
@@ -577,6 +585,18 @@ window.searchWithEngine = function(searchTerm) {
         window.open(searchUrl, '_blank');
     }
 };
+
+// 获取某分类及其所有子分类下的所有收藏
+function getAllFavoritesUnderCategory(category, favoritesData) {
+    const result = [];
+    const prefix = category + '/';
+    Object.entries(favoritesData).forEach(([cat, items]) => {
+        if (cat === category || cat.startsWith(prefix)) {
+            result.push(...items);
+        }
+    });
+    return result;
+}
 
 // 页面加载完成后执行
 document.addEventListener('DOMContentLoaded', loadFavorites);
