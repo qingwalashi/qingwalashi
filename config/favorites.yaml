@@ -137,6 +137,11 @@ favorites:
       description: ""
       type: link
       url: https://mineru.readthedocs.io/en/latest/index.html
+    - title: Napkin AI
+      description: "Napkin AI 是一款专注于商业故事可视化的智能工具，旨在通过AI技术将文本内容自动转化为专业级视觉作品，帮助用户高效传达想法"
+      type: link
+      url: https://napkin.ai/
+      pinned: true
     - title: DeepSeek 模型兼容性检测
       description: ""
       type: link
