@@ -212,10 +212,10 @@ favorites:
       type: link
       url: https://ollama.com/
   AI/AIGC:
-    - title: 通义万相_AI创意作画_AI绘画_人工智能-阿里云
+    - title: 通义万相
       description: ""
       type: link
-      url: hhttps://tongyi.aliyun.com/wanxiang/creation
+      url: https://tongyi.aliyun.com/wanxiang/creation
     - title: Civitai | Stable Diffusion models, embeddings, hypernetworks and more
       description: ""
       type: link
