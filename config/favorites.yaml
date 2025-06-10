@@ -464,6 +464,7 @@ favorites:
       description: "国内领先的企业级零代码应用搭建平台"
       type: link
       url: https://www.jiandaoyun.com/
+      pinned: true
   Shopping:
     - title: 什么值得买
       description: "什么值得买，值得买"
