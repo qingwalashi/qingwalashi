@@ -35,3 +35,9 @@ tools:
     url: "https://schedule.qingwalashi.cn/"
     repo: "https://github.com/qingwalashi/ScheduleAutomation"
 
+  - title: "DeepResearch Web UI(fork repo)"
+    description: "Deep Research 是  dzhng/deep-research  的可视化 UI，可以让 AI 根据特定问题联网搜索并自行深挖，并输出研究报告。本项目可以流式传输 AI 的回答来实时反馈，并使用树状结构可视化搜索过程。"
+    type: "link"
+    url: "https://deep-research.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/deep-research-web-ui"
+
