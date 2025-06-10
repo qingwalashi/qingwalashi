@@ -455,6 +455,15 @@ favorites:
       description: "日本插画交流社区"
       type: link
       url: https://www.pixiv.net/
+  SaaS:
+    - title: 微信公众平台
+      description: "服务号、公众号、小程序"
+      type: link
+      url: https://mp.weixin.qq.com/
+    - title: 简道云
+      description: "国内领先的企业级零代码应用搭建平台"
+      type: link
+      url: https://www.jiandaoyun.com/
   Shopping:
     - title: 什么值得买
       description: "什么值得买，值得买"
