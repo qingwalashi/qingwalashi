@@ -4,53 +4,23 @@ resources:
   prompts:
     - name: "项目月报生成助手"
       description: "自动生成规范化的项目月报，支持钉钉导出的日报数据整理"
-      content: |
-        # 项目月报生成指令
-        指令：
-        1. 输入：接收包含原始项目数据的附件（Excel/CSV/文本等格式）
-        2. 处理要求：
-           - 按自然周整理数据（每周从周一开始至周日结束）
-           - 按项目名称分组显示工作内容
-           - 自动识别月份和周数（如"2025年5月第1周"）
-           - 每周标题需标注具体日期范围（格式：YYYY-MM-DD至YYYY-MM-DD）
-        3. 输出规范：
-           - 严格使用YAML格式
-           - 层级缩进使用2个空格
-           - 每周作为一个顶级字段
-           - 项目作为二级字段
-           - 工作内容作为三级字段列表
-        4. 示例模板：
-           "2025年5月第1周（2025-05-01至2025-05-07）":
-             "项目A":
-               - "完成需求文档v1.0"
-               - "用户调研（20人）"
-             "项目B":
-               - "API接口开发"
-           "2025年5月第2周（2025-05-08至2025-05-14）":
-             "项目A":
-               - "原型设计评审"
-             "项目B":
-               - "数据库优化"
-               - "压力测试"
-
-        附加要求：
-        1. 若原始数据含时间戳，自动转换为周维度
-        2. 相同工作内容合并显示
-        3. 周数计算需跨月正确处理（如月末周可能包含下月初的日期）
-        4. 缺失日期的数据单独归类为"未明确周期工作"
+      file: "resources/prompts/项目月报生成助手.md"
       tags: ["项目管理", "报告生成", "数据分析"]
 
     - name: "静态前端项目模板"
       description: "创建一个纯静态前端项目，使用 HTML + Tailwind CSS"
-      content: |
-        创建一个纯静态前端项目，使用 HTML + Tailwind CSS（通过 CDN 引入），不依赖 React/Vue 等框架。要求包括：
-
-        基础 HTML5 模板结构
-        通过 <script src> 引入 Tailwind CSS 最新版本
-        纯原生实现（无第三方库），代码干净且有注释
-        包含干净的目录结构建议（如 index.html、css/style.css、js/main.js）
-        响应式设计，适配移动端
+      file: "resources/prompts/静态前端项目模板.md"
       tags: ["前端开发", "HTML", "Tailwind CSS"]
+
+    - name: "企业全称识别（联网检索版）"
+      description: "根据企业缩写识别宁波市范围内的企业全称和注册城市，注意需开启联网检索，提示词地区范围可修改"
+      file: "resources/prompts/企业全称识别提示词（联网检索版）.md"
+      tags: ["企业信息", "数据检索", "宁波"]
+
+    - name: "企业全称识别（ShuidiDataMcp版）"
+      description: "根据企业缩写识别企业全称和统一社会信用代码，注意需使用ShuidiData MCP（https://mcp.so/server/水滴大数据企业查询/shuididata）"
+      file: "resources/prompts/企业全称识别提示词（ShuidiDataMcp版）.md"
+      tags: ["企业信息", "数据检索", "信用代码"]
 
   # Dify DSL
   dify_dsl:

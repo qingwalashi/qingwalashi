@@ -68,9 +68,16 @@
                     const promptsGrid = document.createElement('div');
                     promptsGrid.className = 'resource-grid';
                     
-                    data.resources.prompts.forEach(prompt => {
-                        promptsGrid.appendChild(createResourceCard(prompt));
-                    });
+                    for (const prompt of data.resources.prompts) {
+                        try {
+                            const promptResponse = await fetch(`../${prompt.file}`);
+                            const promptContent = await promptResponse.text();
+                            prompt.content = promptContent;
+                            promptsGrid.appendChild(createResourceCard(prompt));
+                        } catch (error) {
+                            console.error(`Error loading prompt file ${prompt.file}:`, error);
+                        }
+                    }
                     
                     promptsSection.appendChild(promptsGrid);
                     container.appendChild(promptsSection);
