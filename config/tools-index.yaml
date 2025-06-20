@@ -6,11 +6,16 @@
 #     repo: "如没有，删掉此行"
 
 tools:
-  - title: "个人项目管理看板"
+  - title: "个人项目管理-进度看板"
     description: "依托简道云建立的项目进度看板，输入密码后查看"
     type: "link"
     url: "https://trhj7w84un.jiandaoyun.com/dash/683873b564f1c0fc3251192a"
 
+  - title: "个人项目管理-自研成本看板"
+    description: "依托简道云建立的项目自研成本看板，输入密码后查看"
+    type: "link"
+    url: "https://trhj7w84un.jiandaoyun.com/dash/68412d127ec0a5483ab47c7a"
+    
   - title: "Markdown 转 Word 工具"
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     type: "link"
