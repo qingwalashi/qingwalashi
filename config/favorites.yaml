@@ -456,6 +456,11 @@ favorites:
       type: link
       url: https://www.pixiv.net/
   SaaS:
+    - title: flomo
+      description: "flomo是一款以卡片笔记为核心的轻量化记录工具，支持多端同步，通过微信输入、多级标签和智能关联功能，帮助用户轻松捕捉灵感并建立知识网络。"
+      type: link
+      url: https://v.flomoapp.com/mine
+      pinned: true
     - title: 微信公众平台
       description: "服务号、公众号、小程序"
       type: link
