@@ -16,6 +16,12 @@ tools:
     type: "link"
     url: "https://trhj7w84un.jiandaoyun.com/dash/68412d127ec0a5483ab47c7a"
     
+  - title: "DayCraft 智能日报助手"
+    description: "告别繁琐的日报撰写，专注于真正的工作。 我们的AI助手帮您整理、记录和生成专业的日报和周报，提高工作效率。"
+    type: "link"
+    url: "https://daycraft.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/DayCraft"
+  
   - title: "Markdown 转 Word 工具"
     description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
     type: "link"

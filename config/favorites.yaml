@@ -228,6 +228,22 @@ favorites:
       description: ""
       type: link
       url: https://spell.novelai.dev/
+  Dev/云服务:
+    - title: 腾讯云-EdgeOne服务
+      description: "腾讯云EdgeOne是一款集安全加速、智能调度和边缘计算于一体的全球边缘云服务平台。"
+      type: link
+      url: https://console.cloud.tencent.com/edgeone/pages
+      pinned: true
+    - title: Vercel
+      description: "Vercel 是一个全栈云平台，用于构建和部署现代 Web 应用程序。"
+      type: link
+      url: https://vercel.com/
+      pinned: true
+    - title: Supabase
+      description: "Supabase 是一个开源的 Firebase 替代品，提供实时数据库、身份验证、文件存储等功能。"
+      type: link
+      url: https://supabase.com/
+      pinned: true
   Dev/开发工具:
     - title: "GitHub"
       description: "全球最大的代码托管平台，提供Git版本控制和协作开发功能"
