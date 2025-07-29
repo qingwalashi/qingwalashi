@@ -2,7 +2,12 @@
 resources:
   # 大模型提示词
   prompts:
-    - name: "项目月报生成助手"
+    - name: "项目周报生成助手-适配YML格式内容"
+      description: "自动生成规范化的项目周报，支持YML格式内容"
+      file: "resources/prompts/项目周报生成助手.md"
+      tags: ["项目管理", "报告生成", "数据分析"]
+    
+    - name: "项目月报生成助手-适配钉钉导出Excel"
       description: "自动生成规范化的项目月报，支持钉钉导出的日报数据整理"
       file: "resources/prompts/项目月报生成助手.md"
       tags: ["项目管理", "报告生成", "数据分析"]
