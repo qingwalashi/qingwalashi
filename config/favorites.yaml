@@ -234,6 +234,11 @@ favorites:
       type: link
       url: https://console.cloud.tencent.com/edgeone/pages
       pinned: true
+    - title: cloudflare
+      description: "Cloudflare 是一家提供内容分发网络 (CDN)、DDoS 防护、域名系统 (DNS) 解析等服务的网络安全和性能优化公司。"
+      type: link
+      url: https://www.cloudflare.com/
+      pinned: true
     - title: Vercel
       description: "Vercel 是一个全栈云平台，用于构建和部署现代 Web 应用程序。"
       type: link
