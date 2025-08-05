@@ -10,6 +10,7 @@ tools:
     description: "智能的云服务配置助手系统，集成大模型能力，支持自然语言需求解析和自动配置清单生成"
     type: "link"
     url: "https://cloudadvisor.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/CloudAdvisor"
     
   - title: "DayCraft 智能日报助手"
     description: "告别繁琐的日报撰写，专注于真正的工作。 我们的AI助手帮您整理、记录和生成专业的日报和周报，提高工作效率。"
