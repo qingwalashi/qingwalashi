@@ -3,7 +3,7 @@
 # 每个文章包含：日期、名称、简介、标签
 
 articles:
-  - title: "Cursor 免费助手 —— Cursor Free Everyday"
+  - title: "Cursor 免费助手 —— Cursor Free Everyday【注:已收费】"
     date: "2025-06-04"
     description: "一个可以每日续杯的 Cursor 工具，提供 Windows 和 Mac 的跨平台方案"
     tags: ["LLM"]
