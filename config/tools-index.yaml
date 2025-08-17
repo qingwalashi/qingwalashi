@@ -6,7 +6,7 @@
 #     repo: "如没有，删掉此行"
 
 tools:
-  - title: "云需求顾问"
+  - title: "☁️云需求顾问"
     description: "智能的云服务配置助手系统，集成大模型能力，支持自然语言需求解析和自动配置清单生成"
     type: "link"
     url: "https://cloudadvisor.qingwalashi.cn/"

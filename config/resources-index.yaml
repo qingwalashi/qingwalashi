@@ -39,7 +39,12 @@ resources:
       file: "dify_dsl/信创合规检查（文件上传版）.yml"
       tags: ["信创", "合规", "文件处理"]
 
-    - name: "云需求顾问"
+    - name: "云需求顾问1.0"
       description: "基于Dify的云需求顾问对话流程，支持文字输入，提供云资源规格的规划能力"
-      file: "dify_dsl/云需求顾问.yml"
+      file: "dify_dsl/云需求顾问1.0.yml"
       tags: ["云服务", "需求分析", "规格配置"]
+    
+    - name: "云需求顾问2.0"
+      description: "基于Dify的云需求顾问对话流程，支持文字输入，提供云资源规格的规划能力"
+      file: "dify_dsl/云需求顾问2.0.yml"
+      tags: ["云服务", "需求分析", "规格配置", "生产启用"]
