@@ -8,14 +8,15 @@
 
 favorites:
   AI/AI产品:
+    - title: Qwen
+      description: "通义千问的官方网站"
+      type: link
+      url: https://chat.qwen.ai/
+      pinned: true
     - title: 腾讯元宝 - 轻松工作 多点生活
       description: ""
       type: link
       url: https://yuanbao.tencent.com/
-    - title: Qwen
-      description: ""
-      type: link
-      url: https://chat.qwen.ai/
     - title: 文心一言
       description: ""
       type: link

@@ -48,6 +48,12 @@ tools:
     url: "https://ningbohub.qingwalashi.cn/"
     repo: "https://github.com/qingwalashi/nignbohub"
   
+  - title: "项目售前交付成本模型"
+    description: "一个用于分析售前阶段时长对项目总交付成本影响的静态网页工具。该工具基于团队配置和时间压力的数学模型，帮助项目管理者优化售前和交付阶段的时间分配。"
+    type: "link"
+    url: "https://pdo-cost-model.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/pdo-cost-model"
+
   - title: "DeepResearch Web UI(fork repo)"
     description: "Deep Research 是  dzhng/deep-research  的可视化 UI，可以让 AI 根据特定问题联网搜索并自行深挖，并输出研究报告。本项目可以流式传输 AI 的回答来实时反馈，并使用树状结构可视化搜索过程。"
     type: "link"
