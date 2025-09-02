@@ -368,6 +368,77 @@ body {
     margin-top: 2rem;
 }
 
+/* 工具标题与筛选区域优化 */
+.tools-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tools-filter {
+    flex-shrink: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    padding: 0.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 工具来源角标优化 */
+.tool-source-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+    z-index: 2;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.tool-source-badge.self {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.tool-source-badge.third {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
 .tool-card {
     padding: 1.5rem;
     border: 1px solid var(--border-color);
@@ -440,6 +511,21 @@ body {
 
 .tool-link:hover i {
     transform: translateX(4px);
+}
+
+/* 根据来源区分链接颜色 */
+.tool-link.self {
+    color: var(--primary-color);
+}
+.tool-link.self:hover {
+    color: var(--primary-hover);
+}
+
+.tool-link.third {
+    color: #d97706; /* 橙色 */
+}
+.tool-link.third:hover {
+    color: #b45309; /* 深橙 */
 }
 
 .no-tools {
@@ -630,6 +716,37 @@ body {
     .tools-container {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+
+    .tools-header {
+        flex-direction: row;              /* 与标题同一行 */
+        align-items: center;
+        justify-content: space-between;  /* 右侧放筛选 */
+        flex-wrap: nowrap;               /* 不换行 */
+        gap: 0.5rem;
+    }
+
+    .tools-filter {                      /* 挤压时优先压缩按钮 */
+        margin-left: auto;
+        flex-shrink: 1;
+        max-width: 65%;
+    }
+
+    .filter-buttons {
+        justify-content: flex-end;       /* 右对齐 */
+        gap: 0.25rem;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.75rem;         /* 紧凑尺寸 */
+        font-size: 0.8125rem;
+    }
+
+    .tool-source-badge {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.65rem;
+        padding: 0.2rem 0.4rem;
     }
 
     .tool-card {

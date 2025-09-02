@@ -15,7 +15,17 @@
 
         <!-- 主要内容区 -->
         <main class="main-content">
-            <h1 class="page-title"><i class="fas fa-tools"></i> 工具</h1>
+            <div class="tools-header">
+                <h1 class="page-title"><i class="fas fa-tools"></i> 工具</h1>
+                <!-- 工具来源筛选 -->
+                <div class="tools-filter" aria-label="工具来源筛选">
+                    <div class="filter-buttons" role="tablist">
+                        <button class="filter-btn active" data-filter="全部" role="tab" aria-selected="true">全部</button>
+                        <button class="filter-btn" data-filter="自建" role="tab" aria-selected="false">自建</button>
+                        <button class="filter-btn" data-filter="第三方" role="tab" aria-selected="false">第三方</button>
+                    </div>
+                </div>
+            </div>
             <div class="tools-container" id="tools-container">
                 <!-- 工具列表将通过 JavaScript 动态加载 -->
             </div>
@@ -28,51 +38,78 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="../assets/js/components.js"></script>
     <script>
-        // 加载工具文章
+        // 加载并渲染工具列表，支持来源筛选
+        let allTools = [];
+        let currentFilter = '全部';
+
+        function renderTools() {
+            const container = document.getElementById('tools-container');
+            if (!allTools || allTools.length === 0) {
+                container.innerHTML = `
+                    <div class="no-tools">
+                        暂无工具文章
+                    </div>
+                `;
+                return;
+            }
+
+            const filtered = currentFilter === '全部'
+                ? allTools
+                : allTools.filter(t => (t.source || '自建') === currentFilter);
+
+            container.innerHTML = filtered.map(tool => {
+                const href = tool.type === 'link' ? tool.url : '../' + tool.path;
+                const githubIcon = tool.repo ? `
+                    <a href="${tool.repo}" class="tool-github" target="_blank" title="查看源码">
+                        <i class="fab fa-github"></i>
+                    </a>
+                ` : '';
+                const source = (tool.source || '自建');
+                const isThird = source !== '自建';
+                const linkText = isThird ? '使用第三方工具' : '使用工具';
+                const linkClass = `tool-link ${isThird ? 'third' : 'self'}`;
+                return `
+                    <div class="tool-card">
+                        <div>
+                            <h2 class="tool-title">${tool.title}</h2>
+                            ${githubIcon}
+                            <p class="tool-description">${tool.description}</p>
+                        </div>
+                        <a href="${href}" class="${linkClass}" target="_blank">
+                            ${linkText} <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        }
+
         async function loadTools() {
             try {
                 const response = await fetch('../config/tools-index.yaml');
                 const text = await response.text();
-                const tools = jsyaml.load(text).tools;
-                
-                const container = document.getElementById('tools-container');
-                
-                if (tools.length === 0) {
-                    container.innerHTML = `
-                        <div class="no-tools">
-                            暂无工具文章
-                        </div>
-                    `;
-                    return;
-                }
-
-                container.innerHTML = tools.map(tool => {
-                    // 处理路径
-                    const href = tool.type === 'link' ? tool.url : '../' + tool.path;
-                    
-                    // 添加 GitHub 图标（如果有 repo 链接）
-                    const githubIcon = tool.repo ? `
-                        <a href="${tool.repo}" class="tool-github" target="_blank" title="查看源码">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    ` : '';
-                    
-                    return `
-                        <div class="tool-card">
-                            <div>
-                                <h2 class="tool-title">${tool.title}</h2>
-                                ${githubIcon}
-                                <p class="tool-description">${tool.description}</p>
-                            </div>
-                            <a href="${href}" class="tool-link" target="_blank">
-                                使用工具 <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    `;
-                }).join('');
+                const parsed = jsyaml.load(text);
+                allTools = (parsed && parsed.tools) ? parsed.tools : [];
+                bindFilterEvents();
+                renderTools();
             } catch (error) {
                 console.error('Error loading tools:', error);
             }
+        }
+
+        function bindFilterEvents() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    currentFilter = btn.dataset.filter;
+                    renderTools();
+                });
+            });
         }
 
         // 页面加载完成后执行
