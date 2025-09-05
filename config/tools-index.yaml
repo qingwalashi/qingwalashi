@@ -21,8 +21,8 @@ tools:
     repo: "https://github.com/qingwalashi/DayCraft"
     source: "自建"
   
-  - title: "Markdown 转 Word 工具"
-    description: "一个简单易用的 Markdown 转 Word 文档工具，支持多种格式转换和样式定制。"
+  - title: "PaperPal 办公文档处理助手"
+    description: "PaperPal 是一个功能丰富的办公文档处理助手，提供多种文档处理功能，包括格式转换、在线预览、资源下载等服务。所有功能均在浏览器中运行，无需安装任何软件，保护用户隐私。"
     type: "link"
     url: "https://md2docx.qingwalashi.cn"
     repo: "https://github.com/qingwalashi/MD2DOCX"
@@ -35,8 +35,8 @@ tools:
     repo: "https://github.com/qingwalashi/AmountConvert"
     source: "自建"
   
-  - title: "宁波阳光采购平台近期开标信息"
-    description: "转发跳转到自建的宁波阳光采购平台近期开标信息网站，每日自动更新近3天的开标信息。"
+  - title: "宁波阳光采购平台采购信息摘要"
+    description: "转发跳转到自建的宁波阳光采购平台采购信息网站，每日更新新增采购信息和近期开标信息。"
     type: "link"
     url: "https://nbygcg.qingwalashi.cn/"
     repo: "https://github.com/qingwalashi/nbygcg"
