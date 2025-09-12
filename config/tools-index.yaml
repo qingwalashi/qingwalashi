@@ -49,6 +49,13 @@ tools:
     repo: "https://github.com/qingwalashi/ScheduleAutomation"
     source: "自建"
 
+  - title: "SpicyOrder 点菜助手"
+    description: "一个基于前端静态页面的数据驱动点菜助手。通过加载餐馆及菜品数据，提供筛选、搜索、预算计算与“随机补全”能力，帮助你快速生成一份可直接下单的菜单。"
+    type: "link"
+    url: "https://xsg.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/SpicyOrder"
+    source: "自建"
+  
   - title: "基于天地图的宁波地理数据"
     description: "一个基于天地图与 OpenStreetMap 的可视化小项目，用于展示宁波市不同要素（商圈、医院、学校等）的边界，并支持坐标从 WGS84 转 CGCS2000。"
     type: "link"
