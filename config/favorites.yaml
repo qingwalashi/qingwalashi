@@ -171,6 +171,10 @@ favorites:
       description: "在线抠图软件_图片去除背景"
       type: link
       url: https://www.remove.bg/zh
+    - title: Remove Background WebGPU - Hugging Face
+      description: "这是一个抠图工具 Remove Background WebGPU，也是在线免费使用，生成速度快、而且支持批量处理+打包下载。它处理边缘简单的物体效果非常好，如果是毛发、细丝等内容，也能很好地保留细节。"
+      type: link
+      url: https://huggingface.co/spaces/not-lain/background-removal 
     - title: AILongAI工具箱
       description: ""
       type: link
