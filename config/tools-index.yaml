@@ -83,3 +83,10 @@ tools:
     url: "https://prompt.always200.com/"
     repo: "https://github.com/linshenkx/prompt-optimizer"
     source: "第三方"
+
+  - title: "moontv #forked"
+    description: "一个基于 Next.js 的电影网站，使用 TMDB API 提供数据，并支持多语言。"
+    type: "link"
+    url: "https://moontv.qingwalashi.cn/"
+    repo: "https://github.com/qingwalashi/moontv"
+    source: "第三方"
